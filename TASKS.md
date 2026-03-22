@@ -132,10 +132,10 @@
 - [x] Commit: feat: implement onboarding flow
 
 ### 3B. Animations & Polish
-- [ ] Add success toast animation when bookmark saved
-- [ ] Add empty state illustrations
-- [ ] Polish transitions and animations
-- [ ] Commit: feat: add polish and animations
+- [x] Add success toast animation when bookmark saved
+- [x] Add empty state illustrations
+- [x] Polish transitions and animations
+- [x] Commit: feat: add polish and animations
 
 ### 3C. Widget
 - [ ] Implement WidgetEntry.swift (TimelineEntry)

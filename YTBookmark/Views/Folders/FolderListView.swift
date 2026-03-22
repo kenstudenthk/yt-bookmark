@@ -79,6 +79,7 @@ struct FolderListView: View {
                 }
             }
             .padding(16)
+            .animation(.default, value: folders)
         }
     }
 

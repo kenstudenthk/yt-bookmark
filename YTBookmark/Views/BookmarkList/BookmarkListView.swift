@@ -79,6 +79,7 @@ struct BookmarkListView: View {
             }
         }
         .listStyle(.plain)
+        .animation(.default, value: records)
     }
 
     // MARK: - Empty State

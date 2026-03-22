@@ -55,7 +55,7 @@ struct ContentView: View {
                     .padding(.bottom, 16)
             }
         }
-        .animation(.easeInOut(duration: 0.25), value: pendingRecordService.toastMessage)
+        .animation(.spring(response: 0.4, dampingFraction: 0.7), value: pendingRecordService.toastMessage)
     }
 
     // MARK: - Sheet Content
@@ -79,14 +79,19 @@ struct ToastView: View {
     let message: String
 
     var body: some View {
-        Text(message)
-            .font(.subheadline.weight(.medium))
-            .foregroundStyle(.white)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 12)
-            .background(.black.opacity(0.8), in: Capsule())
-            .onAppear {
-                UIAccessibility.post(notification: .announcement, argument: message)
-            }
+        HStack(spacing: 8) {
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundStyle(.green)
+            Text(message)
+                .font(.subheadline.weight(.medium))
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
+        .background(.black.opacity(0.85), in: Capsule())
+        .shadow(color: .black.opacity(0.2), radius: 8, y: 4)
+        .onAppear {
+            UIAccessibility.post(notification: .announcement, argument: message)
+        }
     }
 }
