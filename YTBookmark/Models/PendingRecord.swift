@@ -8,6 +8,7 @@ struct PendingRecord: Codable {
     let rawURL: String
     let timestamp: Int
     let savedAt: Date
+    let note: String
 
     // MARK: - App Group
 
