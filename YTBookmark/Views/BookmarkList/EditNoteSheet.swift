@@ -23,7 +23,7 @@ struct EditNoteSheet: View {
                 } footer: {
                     Text("\(note.count)/500")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(noteCountColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
@@ -50,6 +50,12 @@ struct EditNoteSheet: View {
             }
         }
         .onAppear { note = record.note }
+    }
+
+    private var noteCountColor: Color {
+        if note.count > 490 { return .red }
+        if note.count > 400 { return .orange }
+        return .secondary
     }
 
     private func save() {

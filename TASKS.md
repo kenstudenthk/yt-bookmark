@@ -114,10 +114,10 @@
 - [x] Commit: feat: implement Search
 
 ### 2E. Evidence Collection
-- [ ] Verify all screens match UX-ARCHITECTURE.md
-- [ ] Verify empty states render
-- [ ] Verify error alerts show correctly
-- [ ] Verify loading states display
+- [x] Verify all screens match UX-ARCHITECTURE.md
+- [x] Verify empty states render
+- [x] Verify error alerts show correctly
+- [x] Verify loading states display
 
 ---
 

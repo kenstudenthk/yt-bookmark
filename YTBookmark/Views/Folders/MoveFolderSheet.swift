@@ -23,7 +23,7 @@ struct MoveFolderSheet: View {
                         HStack {
                             Image(systemName: "tray")
                                 .foregroundStyle(.secondary)
-                            Text("No Folder")
+                            Text("Uncategorised")
                                 .foregroundStyle(.primary)
                             Spacer()
                             if record.folder == nil {

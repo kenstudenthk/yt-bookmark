@@ -9,6 +9,7 @@ struct FolderListView: View {
     @Environment(\.modelContext) private var context
 
     @State private var viewModel = FolderListViewModel()
+    @State private var folderPendingDelete: Folder?
 
     private let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -24,12 +25,29 @@ struct FolderListView: View {
             }
         }
         .navigationTitle("Folders")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbar }
         .sheet(isPresented: $viewModel.isShowingCreateSheet) {
             CreateFolderSheet { name, colorHex in
                 viewModel.createFolder(name: name, colorHex: colorHex, context: context)
             }
+        }
+        .alert(
+            "Delete \"\(folderPendingDelete?.name ?? "")\"?",
+            isPresented: Binding(
+                get: { folderPendingDelete != nil },
+                set: { if !$0 { folderPendingDelete = nil } }
+            )
+        ) {
+            Button("Cancel", role: .cancel) { folderPendingDelete = nil }
+            Button("Delete", role: .destructive) {
+                if let folder = folderPendingDelete {
+                    viewModel.deleteFolder(folder, context: context)
+                    folderPendingDelete = nil
+                }
+            }
+        } message: {
+            Text("Bookmarks will be moved to Uncategorised.")
         }
         .alert("Error", isPresented: Binding(
             get: { viewModel.errorMessage != nil },
@@ -53,7 +71,7 @@ struct FolderListView: View {
                     .buttonStyle(.plain)
                     .contextMenu {
                         Button(role: .destructive) {
-                            viewModel.deleteFolder(folder, context: context)
+                            folderPendingDelete = folder
                         } label: {
                             Label("Delete Folder", systemImage: "trash")
                         }

@@ -5,11 +5,7 @@ struct FolderCardView: View {
     let folder: Folder
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            RoundedRectangle(cornerRadius: 6)
-                .fill(Color(hex: folder.colorHex))
-                .frame(height: 6)
-
+        VStack(alignment: .leading, spacing: 6) {
             Text(folder.name)
                 .font(.subheadline.weight(.semibold))
                 .lineLimit(2)
@@ -19,9 +15,13 @@ struct FolderCardView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
-        .padding(12)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
+        .padding(14)
+        .frame(maxWidth: .infinity, minHeight: 80, alignment: .leading)
+        .background(Color(hex: folder.colorHex).opacity(0.25), in: RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color(hex: folder.colorHex).opacity(0.4), lineWidth: 1)
+        )
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(folder.name), \(countLabel)")
     }

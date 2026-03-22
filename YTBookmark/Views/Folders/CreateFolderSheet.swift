@@ -16,9 +16,21 @@ struct CreateFolderSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Folder Name") {
+                Section {
                     TextField("Name", text: $name)
                         .autocorrectionDisabled()
+                        .onChange(of: name) { _, new in
+                            if new.count > 30 { name = String(new.prefix(30)) }
+                        }
+                } header: {
+                    Text("Folder Name")
+                } footer: {
+                    if !name.isEmpty {
+                        Text("\(name.count)/30")
+                            .font(.caption)
+                            .foregroundStyle(name.count > 25 ? Color.red : Color.secondary)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
                 }
 
                 Section("Colour") {
