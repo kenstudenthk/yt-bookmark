@@ -124,12 +124,12 @@
 ## Phase 3 — Polish & Distribution
 
 ### 3A. Onboarding
-- [ ] Implement OnboardingView (3 screens with TabView paging)
-- [ ] Implement OnboardingScreen 1: Welcome
-- [ ] Implement OnboardingScreen 2: How-to-save (YouTube share toggle)
-- [ ] Implement OnboardingScreen 3: Done
-- [ ] Gate onboarding on UserDefaults "hasCompletedOnboarding"
-- [ ] Commit: feat: implement onboarding flow
+- [x] Implement OnboardingView (3 screens with TabView paging)
+- [x] Implement OnboardingScreen 1: Welcome
+- [x] Implement OnboardingScreen 2: How-to-save (YouTube share toggle)
+- [x] Implement OnboardingScreen 3: Done
+- [x] Gate onboarding on UserDefaults "hasCompletedOnboarding"
+- [x] Commit: feat: implement onboarding flow
 
 ### 3B. Animations & Polish
 - [ ] Add success toast animation when bookmark saved

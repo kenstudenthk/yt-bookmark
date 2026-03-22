@@ -9,6 +9,8 @@ struct YTBookmarkApp: App {
 
     @State private var pendingRecordService: PendingRecordService
     @State private var navigationStore = NavigationStore()
+    @State private var hasCompletedOnboarding =
+        UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
 
     @Environment(\.scenePhase) private var scenePhase
 
@@ -29,6 +31,12 @@ struct YTBookmarkApp: App {
                 .environment(navigationStore)
                 .onOpenURL { url in
                     handleDeepLink(url)
+                }
+                .fullScreenCover(isPresented: .constant(!hasCompletedOnboarding)) {
+                    OnboardingView {
+                        UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+                        hasCompletedOnboarding = true
+                    }
                 }
         }
         .modelContainer(container)
