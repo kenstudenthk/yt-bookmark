@@ -13,6 +13,7 @@
 		37CFD38BECF6F23A46868B37 /* MoveFolderSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21E4967E6824B30BD2A8EE8 /* MoveFolderSheet.swift */; };
 		37D3C650A1433C6F9CE4FFDA /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9B619BB3724646D4452C8 /* Folder.swift */; };
 		3FAB3EB0B6D4C3737CF7E2B5 /* ShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986C8F65E659E622F52E1A2E /* ShareViewModel.swift */; };
+		4FC766F047D2A58950BB815B /* WidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CFB35BFC4B1E7B37E1A13C /* WidgetEntry.swift */; };
 		539827EA3C83A45104EE23FE /* YouTubeURLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */; };
 		54003C1AA70DDE693D42DD50 /* YouTubeURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0079C3C34F6E1ECEE371599 /* YouTubeURLParser.swift */; };
 		543FEDAD470301B9E8214BF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0BF6282C9FCC7F4D001090 /* ContentView.swift */; };
@@ -119,6 +120,7 @@
 		9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecord.swift; sourceTree = "<group>"; };
 		A5621170FAA0C50E8EFFFC73 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		AD388D446189E0691468F026 /* FolderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewModel.swift; sourceTree = "<group>"; };
+		B8CFB35BFC4B1E7B37E1A13C /* WidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntry.swift; sourceTree = "<group>"; };
 		BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeURLParserTests.swift; sourceTree = "<group>"; };
 		BE059AA2E3760B6F5BFB7FEB /* YTBookmarkTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = YTBookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE0FC707A1B299856A510D3 /* DeepLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkService.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				D0112A48EB16BB9F753A0521 /* BookmarkWidget.entitlements */,
 				307F927D008D24680223A823 /* BookmarkWidget.swift */,
 				17358019A58BC6F8B0E2FC39 /* Info.plist */,
+				B8CFB35BFC4B1E7B37E1A13C /* WidgetEntry.swift */,
 			);
 			path = BookmarkWidget;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6A12F269CFDBC63531F760B /* BookmarkWidget.swift in Sources */,
+				4FC766F047D2A58950BB815B /* WidgetEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

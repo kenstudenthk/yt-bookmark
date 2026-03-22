@@ -138,13 +138,13 @@
 - [x] Commit: feat: add polish and animations
 
 ### 3C. Widget
-- [ ] Implement WidgetEntry.swift (TimelineEntry)
-- [ ] Implement BookmarkWidget.swift (small + medium views)
-- [ ] Implement WidgetProvider (read from App Group widgetData)
-- [ ] Implement deep link handling in main app (ytbookmark://)
-- [ ] Ensure main app writes widgetData on every SwiftData modification
-- [ ] Set 30-minute refresh policy
-- [ ] Commit: feat: implement WidgetKit
+- [x] Implement WidgetEntry.swift (TimelineEntry)
+- [x] Implement BookmarkWidget.swift (small + medium views)
+- [x] Implement WidgetProvider (read from App Group widgetData)
+- [x] Implement deep link handling in main app (ytbookmark://)
+- [x] Ensure main app writes widgetData on every SwiftData modification
+- [x] Set 30-minute refresh policy
+- [x] Commit: feat: implement WidgetKit
 
 ### 3D. Reality Check
 - [ ] Full end-to-end validation against SPEC.md
