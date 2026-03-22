@@ -64,6 +64,8 @@ targets:
     bundleId: com.myapp.ytbookmark.share
     sources:
       - path: ShareExtension
+      - path: YTBookmark/Parsers/YouTubeURLParser.swift
+      - path: YTBookmark/Models/PendingRecord.swift
     settings:
       base:
         SWIFT_VERSION: "5.9"
