@@ -34,12 +34,8 @@ final class PendingRecordService {
         // again during a slow API call (concurrency guard from SPEC.md §7)
         PendingRecord.delete()
 
-        // Fetch metadata from YouTube API
-        let metadata = await YouTubeAPIService.fetchMetadata(videoID: pending.videoID)
-
-        let title         = metadata?.title        ?? pending.videoID
-        let thumbnailURL  = metadata?.thumbnailURL ?? VideoRecord.fallbackThumbnailURL(for: pending.videoID)
-        let needsEnrich   = metadata == nil
+        // Fetch metadata from the correct platform API
+        let (title, thumbnailURL, needsEnrich) = await fetchMetadata(for: pending)
 
         do {
             try repository.createRecord(
@@ -48,13 +44,31 @@ final class PendingRecordService {
                 thumbnailURL:    thumbnailURL,
                 timestamp:       pending.timestamp,
                 note:            pending.note,
-                needsEnrichment: needsEnrich
+                needsEnrichment: needsEnrich,
+                platform:        pending.platform
             )
             await refreshWidgetData()
             await showToast("Bookmark saved!")
         } catch {
             // SwiftData save failed — record is lost but pendingRecord is already deleted.
             // Nothing more we can do here; error would need to surface via a separate mechanism.
+        }
+    }
+
+    // MARK: - Metadata Fetch (platform-aware)
+
+    /// Returns (title, thumbnailURL, needsEnrichment) for the given pending record.
+    private func fetchMetadata(for pending: PendingRecord) async -> (String, String, Bool) {
+        if pending.platform == "bilibili" {
+            if let m = await BilibiliAPIService.fetchMetadata(bvid: pending.videoID) {
+                return (m.title, m.thumbnailURL, false)
+            }
+            return (pending.videoID, "", true)
+        } else {
+            if let m = await YouTubeAPIService.fetchMetadata(videoID: pending.videoID) {
+                return (m.title, m.thumbnailURL, false)
+            }
+            return (pending.videoID, VideoRecord.fallbackThumbnailURL(for: pending.videoID), true)
         }
     }
 
@@ -72,8 +86,22 @@ final class PendingRecordService {
 
         var anyUpdated = false
         for record in records {
-            guard let metadata = await YouTubeAPIService.fetchMetadata(videoID: record.videoID)
-            else { continue }
+            let metadata: (title: String, thumbnailURL: String)?
+            if record.platform == "bilibili" {
+                if let m = await BilibiliAPIService.fetchMetadata(bvid: record.videoID) {
+                    metadata = (m.title, m.thumbnailURL)
+                } else {
+                    metadata = nil
+                }
+            } else {
+                if let m = await YouTubeAPIService.fetchMetadata(videoID: record.videoID) {
+                    metadata = (m.title, m.thumbnailURL)
+                } else {
+                    metadata = nil
+                }
+            }
+
+            guard let metadata else { continue }
 
             do {
                 try repository.applyEnrichment(

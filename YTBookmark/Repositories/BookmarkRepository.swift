@@ -22,7 +22,8 @@ final class BookmarkRepository {
         timestamp: Int,
         note: String = "",
         needsEnrichment: Bool = false,
-        folder: Folder? = nil
+        folder: Folder? = nil,
+        platform: String = "youtube"
     ) throws -> VideoRecord {
         let record = VideoRecord(
             videoID: videoID,
@@ -31,6 +32,7 @@ final class BookmarkRepository {
             lastTimestamp: timestamp,
             note: note,
             needsEnrichment: needsEnrichment,
+            platform: platform,
             folder: folder
         )
         context.insert(record)

@@ -56,7 +56,7 @@ struct ShareView: View {
             Image(systemName: "xmark.circle.fill")
                 .font(.system(size: 48))
                 .foregroundStyle(.red)
-            Text("Not a YouTube Link")
+            Text("Unsupported Link")
                 .font(.headline)
             Text(message)
                 .font(.subheadline)
@@ -71,19 +71,24 @@ struct ShareView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    private func readyView(parsed: ParsedYouTubeURL) -> some View {
+    private func readyView(parsed: ParsedVideoURL) -> some View {
         Form {
             // Video info section
             Section {
                 HStack(spacing: 12) {
                     Image(systemName: "play.rectangle.fill")
                         .font(.system(size: 32))
-                        .foregroundStyle(.red)
+                        .foregroundStyle(parsed.platform == "bilibili" ? Color.orange : Color.red)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(parsed.videoID)
                             .font(.headline)
                             .lineLimit(1)
-                        TimestampBadge(seconds: parsed.timestamp)
+                        HStack(spacing: 6) {
+                            TimestampBadge(seconds: parsed.timestamp)
+                            Text(parsed.platform == "bilibili" ? "Bilibili" : "YouTube")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
                 .padding(.vertical, 4)

@@ -1,12 +1,24 @@
 import Foundation
 import Observation
 
+// MARK: - ParsedVideoURL
+
+struct ParsedVideoURL {
+    let videoID: String
+    let timestamp: Int
+    let platform: String  // "youtube" | "bilibili"
+}
+
+// MARK: - ShareState
+
 enum ShareState {
     case loading
     case invalid(message: String)
-    case ready(parsed: ParsedYouTubeURL)
+    case ready(parsed: ParsedVideoURL)
     case saving
 }
+
+// MARK: - ShareViewModel
 
 @Observable
 final class ShareViewModel {
@@ -23,19 +35,23 @@ final class ShareViewModel {
 
     // MARK: - Load
 
-    /// Extracts the first YouTube URL from the extension context and parses it.
+    /// Extracts the first URL from the extension context, resolves b23.tv short links,
+    /// then tries YouTube parser followed by Bilibili parser.
     func loadURL(from context: NSExtensionContext) async {
         for case let item as NSExtensionItem in context.inputItems {
             for provider in item.attachments ?? [] {
                 if provider.hasItemConformingToTypeIdentifier("public.url"),
                    let url = try? await provider.loadItem(forTypeIdentifier: "public.url") as? URL {
-                    await MainActor.run { process(urlString: url.absoluteString) }
+                    let resolved = await resolveIfShortURL(url.absoluteString)
+                    await MainActor.run { process(urlString: resolved) }
                     return
                 }
-                // Safari sometimes sends public.text instead of public.url
+                // Bilibili shares text like "【title-哔哩哔哩】 https://b23.tv/xxx"
                 if provider.hasItemConformingToTypeIdentifier("public.text"),
                    let text = try? await provider.loadItem(forTypeIdentifier: "public.text") as? String {
-                    await MainActor.run { process(urlString: text) }
+                    let urlString = extractURL(from: text) ?? text
+                    let resolved = await resolveIfShortURL(urlString)
+                    await MainActor.run { process(urlString: resolved) }
                     return
                 }
             }
@@ -47,7 +63,6 @@ final class ShareViewModel {
 
     // MARK: - Save
 
-    /// Called when user taps Save. Checks for existing record first.
     func requestSave(context: NSExtensionContext) {
         guard case .ready = state else { return }
         if PendingRecord.exists() {
@@ -57,7 +72,6 @@ final class ShareViewModel {
         }
     }
 
-    /// Called after user confirms overwrite of existing pending record.
     func confirmOverwriteAndSave(context: NSExtensionContext) {
         performSave(context: context)
     }
@@ -72,15 +86,52 @@ final class ShareViewModel {
         ))
     }
 
-    // MARK: - Private
+    // MARK: - Private: Parsing
 
     private func process(urlString: String) {
-        guard let parsed = YouTubeURLParser.parse(urlString) else {
-            state = .invalid(message: "Not a YouTube link")
+        if let parsed = YouTubeURLParser.parse(urlString) {
+            state = .ready(parsed: ParsedVideoURL(
+                videoID: parsed.videoID,
+                timestamp: parsed.timestamp,
+                platform: "youtube"
+            ))
             return
         }
-        state = .ready(parsed: parsed)
+        if let parsed = BilibiliURLParser.parse(urlString) {
+            state = .ready(parsed: ParsedVideoURL(
+                videoID: parsed.videoID,
+                timestamp: parsed.timestamp,
+                platform: "bilibili"
+            ))
+            return
+        }
+        state = .invalid(message: "Share a YouTube or Bilibili video link to bookmark it.")
     }
+
+    /// Extracts the first https:// URL from a string (handles rich share text).
+    private func extractURL(from text: String) -> String? {
+        let pattern = #"https?://[^\s]+"#
+        guard let range = text.range(of: pattern, options: .regularExpression) else { return nil }
+        return String(text[range])
+    }
+
+    /// Follows redirects for b23.tv short URLs; returns original string for all other hosts.
+    private func resolveIfShortURL(_ urlString: String) async -> String {
+        guard
+            let url = URL(string: urlString),
+            url.host?.hasSuffix("b23.tv") == true
+        else { return urlString }
+
+        // HEAD request follows redirects; final response URL is the resolved destination.
+        var request = URLRequest(url: url)
+        request.httpMethod = "HEAD"
+        if let (_, response) = try? await URLSession.shared.data(for: request) {
+            return response.url?.absoluteString ?? urlString
+        }
+        return urlString
+    }
+
+    // MARK: - Private: Save
 
     private func performSave(context: NSExtensionContext) {
         guard case .ready(let parsed) = state else { return }
@@ -91,7 +142,8 @@ final class ShareViewModel {
             rawURL: currentRawURL(parsed: parsed),
             timestamp: parsed.timestamp,
             savedAt: Date(),
-            note: String(note.prefix(500))
+            note: String(note.prefix(500)),
+            platform: parsed.platform
         )
 
         do {
@@ -104,14 +156,19 @@ final class ShareViewModel {
         }
     }
 
-    private func currentRawURL(parsed: ParsedYouTubeURL) -> String {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "youtu.be"
-        components.path = "/\(parsed.videoID)"
-        if parsed.timestamp > 0 {
-            components.queryItems = [URLQueryItem(name: "t", value: "\(parsed.timestamp)")]
+    private func currentRawURL(parsed: ParsedVideoURL) -> String {
+        switch parsed.platform {
+        case "bilibili":
+            return "https://www.bilibili.com/video/\(parsed.videoID)"
+        default:
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "youtu.be"
+            components.path = "/\(parsed.videoID)"
+            if parsed.timestamp > 0 {
+                components.queryItems = [URLQueryItem(name: "t", value: "\(parsed.timestamp)")]
+            }
+            return components.url?.absoluteString ?? "https://youtu.be/\(parsed.videoID)"
         }
-        return components.url?.absoluteString ?? "https://youtu.be/\(parsed.videoID)"
     }
 }

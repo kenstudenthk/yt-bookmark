@@ -13,6 +13,9 @@ struct BookmarkRowView: View {
                     .lineLimit(2)
                 HStack(spacing: 6) {
                     TimestampBadge(seconds: record.lastTimestamp)
+                    if record.platform == "bilibili" {
+                        PlatformBadge(platform: record.platform)
+                    }
                     Text(record.savedAt.formatted(date: .abbreviated, time: .omitted))
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -62,6 +65,22 @@ struct ThumbnailView: View {
                 .foregroundStyle(.secondary)
                 .font(.title3)
         }
+    }
+}
+
+// MARK: - PlatformBadge
+
+struct PlatformBadge: View {
+    let platform: String
+
+    var body: some View {
+        Text(platform == "bilibili" ? "B" : "YT")
+            .font(.caption2.weight(.bold))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 5)
+            .padding(.vertical, 2)
+            .background(platform == "bilibili" ? Color.orange : Color.red, in: Capsule())
+            .accessibilityLabel(platform == "bilibili" ? "Bilibili" : "YouTube")
     }
 }
 
