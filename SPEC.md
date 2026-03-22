@@ -164,10 +164,10 @@ Both `youtube.com` and `www.youtube.com` are supported. Strip `www.` before matc
 ### 4.3 Formatted Time Parser
 
 ```
-1h3m30s → 5610
-3m30s   → 210
-30s     → 30
-1h      → 3600
+1h33m30s → 5610   (3600 + 1980 + 30)
+3m30s    → 210    (180 + 30)
+30s      → 30
+1h       → 3600
 ```
 
 Regex: `(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?`

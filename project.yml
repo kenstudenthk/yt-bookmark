@@ -23,9 +23,10 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "5.9"
-        DEVELOPMENT_TEAM: ""
+        DEVELOPMENT_TEAM: "467H2GUMWN"
         CODE_SIGN_STYLE: Automatic
         INFOPLIST_FILE: YTBookmark/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.myapp.ytbookmark
     info:
       path: YTBookmark/Info.plist
       properties:
@@ -66,12 +67,14 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "5.9"
-        DEVELOPMENT_TEAM: ""
+        DEVELOPMENT_TEAM: "467H2GUMWN"
         CODE_SIGN_STYLE: Automatic
         INFOPLIST_FILE: ShareExtension/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.myapp.ytbookmark.share
     info:
       path: ShareExtension/Info.plist
       properties:
+        CFBundleDisplayName: YT Bookmark
         NSExtension:
           NSExtensionAttributes:
             NSExtensionActivationRule:
@@ -94,9 +97,10 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "5.9"
-        DEVELOPMENT_TEAM: ""
+        DEVELOPMENT_TEAM: "467H2GUMWN"
         CODE_SIGN_STYLE: Automatic
         INFOPLIST_FILE: BookmarkWidget/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.myapp.ytbookmark.widget
     info:
       path: BookmarkWidget/Info.plist
       properties:
@@ -118,5 +122,8 @@ targets:
     settings:
       base:
         SWIFT_VERSION: "5.9"
+        DEVELOPMENT_TEAM: "467H2GUMWN"
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: YES
     dependencies:
       - target: YTBookmark

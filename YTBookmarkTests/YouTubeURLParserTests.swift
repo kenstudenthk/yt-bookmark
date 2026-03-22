@@ -53,10 +53,11 @@ final class YouTubeURLParserTests: XCTestCase {
     // MARK: - Format 4: youtube.com/watch + formatted time (XhYmZs)
 
     func test_youtubeWatch_formattedTime_fullHMS_parsesCorrectly() {
-        let result = YouTubeURLParser.parse("https://youtube.com/watch?v=dQw4w9WgXcQ&t=1h3m30s")
+        // 1h33m30s = 3600 + 1980 + 30 = 5610
+        let result = YouTubeURLParser.parse("https://youtube.com/watch?v=dQw4w9WgXcQ&t=1h33m30s")
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.videoID, "dQw4w9WgXcQ")
-        XCTAssertEqual(result?.timestamp, 5610) // 3600 + 180 + 30
+        XCTAssertEqual(result?.timestamp, 5610)
     }
 
     func test_youtubeWatch_formattedTime_minutesAndSeconds_parsesCorrectly() {
@@ -141,10 +142,10 @@ final class YouTubeURLParserTests: XCTestCase {
     }
 
     func test_validVideoID_withUnderscoreAndHyphen_parsesCorrectly() {
-        // Valid base64url characters
-        let result = YouTubeURLParser.parse("https://youtu.be/abc_def-GHIJ1")
+        // Valid base64url characters; exactly 11 chars: a B _ d E f G - i J 1
+        let result = YouTubeURLParser.parse("https://youtu.be/aB_dEfG-iJ1")
         XCTAssertNotNil(result)
-        XCTAssertEqual(result?.videoID, "abc_def-GHIJ1")
+        XCTAssertEqual(result?.videoID, "aB_dEfG-iJ1")
     }
 
     // MARK: - Non-YouTube URLs → nil
