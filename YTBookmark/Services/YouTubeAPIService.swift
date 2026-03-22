@@ -14,7 +14,8 @@ enum YouTubeAPIService {
     private static var apiKey: String {
         let key = Bundle.main.infoDictionary?["YouTubeAPIKey"] as? String ?? ""
         #if DEBUG
-        if key.isEmpty || key == "YOUR_KEY_HERE" {
+        let isTesting = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        if !isTesting && (key.isEmpty || key == "YOUR_KEY_HERE") {
             fatalError("YouTubeAPIKey is missing from Info.plist. Add it to Config.xcconfig.")
         }
         #endif
@@ -23,11 +24,12 @@ enum YouTubeAPIService {
 
     /// Fetches title and thumbnail for the given YouTube video ID.
     /// Returns nil on network error, quota error, empty response, or any other failure.
-    static func fetchMetadata(videoID: String) async -> VideoMetadata? {
+    /// Pass a custom `session` in tests to avoid real network calls.
+    static func fetchMetadata(videoID: String, session: URLSession = .shared) async -> VideoMetadata? {
         guard let url = buildURL(videoID: videoID) else { return nil }
 
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await session.data(from: url)
 
             guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
                 return nil
