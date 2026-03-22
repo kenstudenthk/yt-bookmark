@@ -40,10 +40,7 @@ struct ContentView: View {
             get: { navigationStore.path },
             set: { navigationStore.path = $0 }
         )) {
-            // Phase 2A: replace with BookmarkListView()
-            Text("YT Bookmark — coming in Phase 2")
-                .navigationTitle("YT Bookmark")
-                .navigationBarTitleDisplayMode(.large)
+            BookmarkListView()
         }
         .sheet(item: Binding(
             get: { navigationStore.activeSheet },
@@ -68,13 +65,11 @@ struct ContentView: View {
         switch sheet {
         case .search:
             // Phase 2D: SearchView()
-            Text("Search — coming in Phase 2")
+            Text("Search — coming in Phase 2D")
         case .editNote(let record):
-            // Phase 2B: EditNoteSheet(record: record)
-            Text("Edit Note: \(record.title) — coming in Phase 2")
+            EditNoteSheet(record: record)
         case .moveToFolder(let record):
-            // Phase 2C: MoveFolderSheet(record: record)
-            Text("Move to Folder: \(record.title) — coming in Phase 2")
+            MoveFolderSheet(record: record)
         }
     }
 }

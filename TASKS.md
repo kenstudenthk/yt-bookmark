@@ -37,44 +37,45 @@
 - [ ] Commit: feat: implement SwiftData models
 
 ### 1D. URL Parser (TDD)
-- [ ] Write failing XCTest: youtu.be with t= (format 1)
-- [ ] Write failing XCTest: youtu.be without t= (format 2)
-- [ ] Write failing XCTest: youtube.com/watch with t= (format 3)
-- [ ] Write failing XCTest: youtube.com/watch with formatted time (format 4)
-- [ ] Write failing XCTest: formatted time parser (1h3m30s edge cases)
-- [ ] Write failing XCTest: non-YouTube URL returns nil
-- [ ] Implement YouTubeURLParser.swift until all tests pass
-- [ ] Commit: feat: implement YouTubeURLParser with full XCTest coverage
+- [x] Write failing XCTest: youtu.be with t= (format 1)
+- [x] Write failing XCTest: youtu.be without t= (format 2)
+- [x] Write failing XCTest: youtube.com/watch with t= (format 3)
+- [x] Write failing XCTest: youtube.com/watch with formatted time (format 4)
+- [x] Write failing XCTest: formatted time parser (1h3m30s edge cases)
+- [x] Write failing XCTest: non-YouTube URL returns nil
+- [x] Implement YouTubeURLParser.swift until all tests pass
+- [x] Commit: feat: implement YouTubeURLParser with full XCTest coverage
+- [x] Verify: 29/29 tests pass on iPhone 17 Simulator
 
 ### 1E. Share Extension
-- [ ] Implement ShareExtension NSExtensionPrincipalClass
-- [ ] Implement ShareViewModel (parse URL, hold state)
-- [ ] Implement ShareView (SwiftUI confirmation UI)
-- [ ] Implement PendingRecord codable struct (shared)
-- [ ] Write pendingRecord to App Group UserDefaults on Save
-- [ ] Handle invalid URL: show error alert
-- [ ] Commit: feat: implement Share Extension
+- [x] Implement ShareExtension NSExtensionPrincipalClass
+- [x] Implement ShareViewModel (parse URL, hold state)
+- [x] Implement ShareView (SwiftUI confirmation UI)
+- [x] Implement PendingRecord codable struct (shared)
+- [x] Write pendingRecord to App Group UserDefaults on Save
+- [x] Handle invalid URL: show error alert
+- [x] Commit: feat: implement Share Extension
 
 ### 1F. Core Services
-- [ ] Implement YouTubeAPIService.swift (fetch title + thumbnail)
-- [ ] Implement DeepLinkService.swift (vnd.youtube:// + Safari fallback)
-- [ ] Implement PendingRecordService.swift (read, ingest, delete from App Group)
-- [ ] Implement WidgetDataService.swift (write widgetData to App Group)
-- [ ] Implement BookmarkRepository.swift (CRUD on SwiftData)
-- [ ] Commit: feat: implement core services
+- [x] Implement YouTubeAPIService.swift (fetch title + thumbnail)
+- [x] Implement DeepLinkService.swift (vnd.youtube:// + Safari fallback)
+- [x] Implement PendingRecordService.swift (read, ingest, delete from App Group)
+- [x] Implement WidgetDataService.swift (write widgetData to App Group)
+- [x] Implement BookmarkRepository.swift (CRUD on SwiftData)
+- [x] Commit: feat: implement core services
 
 ### 1G. Pending Ingestion
-- [ ] Wire PendingRecordService in YTBookmarkApp.swift on scenePhase .active
-- [ ] Show success toast after ingestion
+- [x] Wire PendingRecordService in YTBookmarkApp.swift on scenePhase .active
+- [x] Show success toast after ingestion
 - [ ] Test: no internet fallback (save with videoID as title)
-- [ ] Commit: feat: implement pending record ingestion
+- [x] Commit: feat: implement pending record ingestion
 
 ### 1H. API Testing
-- [ ] Test YouTubeAPIService: success response
-- [ ] Test YouTubeAPIService: network error fallback
-- [ ] Test YouTubeAPIService: quota exceeded (403) fallback
-- [ ] Test YouTubeAPIService: empty items fallback
-- [ ] Commit: test: YouTube API service coverage
+- [x] Test YouTubeAPIService: success response
+- [x] Test YouTubeAPIService: network error fallback
+- [x] Test YouTubeAPIService: quota exceeded (403) fallback
+- [x] Test YouTubeAPIService: empty items fallback
+- [x] Commit: test: YouTube API service coverage
 
 ---
 
@@ -87,23 +88,23 @@
 - [ ] Save as UI-NOTES.md — @ui-designer
 
 ### 2B. Bookmark List View
-- [ ] Implement BookmarkListView with NavigationStack
-- [ ] Implement BookmarkRowView (thumbnail + title + badge + date)
-- [ ] Implement timestamp badge (mm:ss or "Start")
-- [ ] Implement thumbnail async loading with placeholder
-- [ ] Implement toolbar (search icon + folder icon)
-- [ ] Implement long press context menu (Edit Note / Move to Folder / Delete)
-- [ ] Implement empty state view
-- [ ] Commit: feat: implement BookmarkListView
+- [x] Implement BookmarkListView with NavigationStack
+- [x] Implement BookmarkRowView (thumbnail + title + badge + date)
+- [x] Implement timestamp badge (mm:ss or "Start")
+- [x] Implement thumbnail async loading with placeholder
+- [x] Implement toolbar (search icon + folder icon)
+- [x] Implement long press context menu (Edit Note / Move to Folder / Delete)
+- [x] Implement empty state view
+- [x] Commit: feat: implement BookmarkListView
 
 ### 2C. Folder Views
-- [ ] Implement FolderListView (grid, 2 columns, + button)
-- [ ] Implement FolderCardView (colour + name + count)
-- [ ] Implement CreateFolderSheet (name field + colour picker)
-- [ ] Implement FolderDetailView (records in folder)
-- [ ] Implement delete folder with confirm alert
-- [ ] Implement MoveFolderSheet (assign record to folder)
-- [ ] Commit: feat: implement Folder views
+- [x] Implement FolderListView (grid, 2 columns, + button)
+- [x] Implement FolderCardView (colour + name + count)
+- [x] Implement CreateFolderSheet (name field + colour picker)
+- [x] Implement FolderDetailView (records in folder)
+- [x] Implement delete folder with confirm alert
+- [x] Implement MoveFolderSheet (assign record to folder)
+- [x] Commit: feat: implement Folder views
 
 ### 2D. Search View
 - [ ] Implement SearchView with search bar

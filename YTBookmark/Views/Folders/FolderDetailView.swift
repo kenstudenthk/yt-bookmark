@@ -1,19 +1,9 @@
 import SwiftUI
 import SwiftData
 
-// MARK: - Navigation destinations
+struct FolderDetailView: View {
 
-enum NavigationDestination: Hashable {
-    case folders
-    case folderDetail(Folder)
-}
-
-// MARK: - BookmarkListView
-
-struct BookmarkListView: View {
-
-    @Query(sort: \VideoRecord.savedAt, order: .reverse)
-    private var records: [VideoRecord]
+    let folder: Folder
 
     @Environment(\.modelContext)    private var context
     @Environment(NavigationStore.self) private var navigationStore
@@ -22,23 +12,14 @@ struct BookmarkListView: View {
 
     var body: some View {
         Group {
-            if records.isEmpty {
+            if folder.records.isEmpty {
                 emptyState
             } else {
                 list
             }
         }
-        .navigationTitle("YT Bookmark")
+        .navigationTitle(folder.name)
         .navigationBarTitleDisplayMode(.large)
-        .toolbar { toolbar }
-        .navigationDestination(for: NavigationDestination.self) { destination in
-            switch destination {
-            case .folders:
-                FolderListView()
-            case .folderDetail(let folder):
-                FolderDetailView(folder: folder)
-            }
-        }
         .alert("Error", isPresented: Binding(
             get: { viewModel.errorMessage != nil },
             set: { if !$0 { viewModel.errorMessage = nil } }
@@ -53,7 +34,7 @@ struct BookmarkListView: View {
 
     private var list: some View {
         List {
-            ForEach(records) { record in
+            ForEach(folder.records.sorted(by: { $0.savedAt > $1.savedAt })) { record in
                 BookmarkRowView(record: record)
                     .contentShape(Rectangle())
                     .onTapGesture { viewModel.openBookmark(record) }
@@ -85,29 +66,9 @@ struct BookmarkListView: View {
 
     private var emptyState: some View {
         ContentUnavailableView(
-            "No Bookmarks Yet",
+            "No Bookmarks",
             systemImage: "bookmark.slash",
-            description: Text("Share a YouTube video to get started.")
+            description: Text("Move bookmarks here from the main list.")
         )
-    }
-
-    // MARK: - Toolbar
-
-    @ToolbarContentBuilder
-    private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
-            NavigationLink(value: NavigationDestination.folders) {
-                Image(systemName: "folder.badge.plus")
-                    .accessibilityLabel("Folders")
-            }
-        }
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                navigationStore.activeSheet = .search
-            } label: {
-                Image(systemName: "magnifyingglass")
-                    .accessibilityLabel("Search")
-            }
-        }
     }
 }
