@@ -48,11 +48,13 @@ struct WidgetEntry: Codable {
     let title: String
     let thumbnailURL: String
     let timestamp: Int
+    let platform: String
 
     init(from record: VideoRecord) {
-        videoID     = record.videoID
-        title       = record.title
+        videoID      = record.videoID
+        title        = record.title
         thumbnailURL = record.thumbnailURL
-        timestamp   = record.lastTimestamp
+        timestamp    = record.lastTimestamp
+        platform     = record.platform
     }
 }

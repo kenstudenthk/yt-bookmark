@@ -11,7 +11,7 @@ final class BookmarkListViewModel {
 
     @MainActor
     func openBookmark(_ record: VideoRecord) {
-        DeepLinkService.openYouTube(videoID: record.videoID, timestamp: record.lastTimestamp)
+        DeepLinkService.openVideo(videoID: record.videoID, timestamp: record.lastTimestamp, platform: record.platform)
     }
 
     func deleteRecord(_ record: VideoRecord, context: ModelContext) {

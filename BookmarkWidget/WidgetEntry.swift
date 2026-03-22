@@ -10,12 +10,13 @@ struct WidgetBookmark: Codable, Identifiable {
     let title: String
     let thumbnailURL: String
     let timestamp: Int
+    let platform: String
 
     var id: String { videoID }
 
     /// ytbookmark:// deep link URL for this bookmark.
     var deepLinkURL: URL {
-        URL(string: "ytbookmark://open?v=\(videoID)&t=\(timestamp)")!
+        URL(string: "ytbookmark://open?v=\(videoID)&t=\(timestamp)&p=\(platform)")!
     }
 
     /// Formatted timestamp label ("Start", "m:ss", "h:mm:ss").
@@ -35,13 +36,14 @@ struct WidgetBookmark: Codable, Identifiable {
         videoID: "dQw4w9WgXcQ",
         title: "How to build great iOS apps",
         thumbnailURL: "",
-        timestamp: 312
+        timestamp: 312,
+        platform: "youtube"
     )
 
     static let samples: [WidgetBookmark] = [
-        WidgetBookmark(videoID: "dQw4w9WgXcQ", title: "How to build great iOS apps", thumbnailURL: "", timestamp: 312),
-        WidgetBookmark(videoID: "abc123defGH", title: "SwiftUI advanced techniques", thumbnailURL: "", timestamp: 0),
-        WidgetBookmark(videoID: "XYZ987uvwAB", title: "Understanding SwiftData models", thumbnailURL: "", timestamp: 5610),
+        WidgetBookmark(videoID: "dQw4w9WgXcQ", title: "How to build great iOS apps", thumbnailURL: "", timestamp: 312, platform: "youtube"),
+        WidgetBookmark(videoID: "BV1xx411c7mD", title: "GitHub一周热点 — Rust工具集", thumbnailURL: "", timestamp: 0, platform: "bilibili"),
+        WidgetBookmark(videoID: "XYZ987uvwAB", title: "Understanding SwiftData models", thumbnailURL: "", timestamp: 5610, platform: "youtube"),
     ]
 }
 

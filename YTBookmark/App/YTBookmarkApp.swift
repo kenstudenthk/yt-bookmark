@@ -50,13 +50,13 @@ struct YTBookmarkApp: App {
     // MARK: - Deep Link
 
     private func handleDeepLink(_ url: URL) {
-        guard let (videoID, timestamp) = DeepLinkService.parseIncomingDeepLink(url) else { return }
+        guard let (videoID, timestamp, platform) = DeepLinkService.parseIncomingDeepLink(url) else { return }
 
         // Reset navigation to root, dismiss any open sheet
-        navigationStore.path         = NavigationPath()
-        navigationStore.activeSheet  = nil
+        navigationStore.path        = NavigationPath()
+        navigationStore.activeSheet = nil
 
-        // Open YouTube (primary: vnd.youtube://, fallback: Safari)
-        DeepLinkService.openYouTube(videoID: videoID, timestamp: timestamp)
+        // Open video on the correct platform
+        DeepLinkService.openVideo(videoID: videoID, timestamp: timestamp, platform: platform)
     }
 }
