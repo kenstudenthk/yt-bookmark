@@ -9,6 +9,32 @@ struct PendingRecord: Codable {
     let timestamp: Int
     let savedAt: Date
     let note: String
+    let platform: String          // "youtube" | "bilibili"
+
+    // MARK: - Backward-compatible decoding (platform absent in old JSON → "youtube")
+
+    enum CodingKeys: String, CodingKey {
+        case videoID, rawURL, timestamp, savedAt, note, platform
+    }
+
+    init(videoID: String, rawURL: String, timestamp: Int, savedAt: Date, note: String, platform: String = "youtube") {
+        self.videoID = videoID
+        self.rawURL = rawURL
+        self.timestamp = timestamp
+        self.savedAt = savedAt
+        self.note = note
+        self.platform = platform
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        videoID   = try c.decode(String.self, forKey: .videoID)
+        rawURL    = try c.decode(String.self, forKey: .rawURL)
+        timestamp = try c.decode(Int.self,    forKey: .timestamp)
+        savedAt   = try c.decode(Date.self,   forKey: .savedAt)
+        note      = try c.decode(String.self, forKey: .note)
+        platform  = try c.decodeIfPresent(String.self, forKey: .platform) ?? "youtube"
+    }
 
     // MARK: - App Group
 

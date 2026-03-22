@@ -11,6 +11,7 @@ final class VideoRecord {
     var lastTimestamp: Int
     var note: String
     var needsEnrichment: Bool
+    var platform: String          // "youtube" | "bilibili"
     var folder: Folder?
 
     @Relationship(deleteRule: .cascade, inverse: \BookmarkStamp.video)
@@ -24,6 +25,7 @@ final class VideoRecord {
         lastTimestamp: Int = 0,
         note: String = "",
         needsEnrichment: Bool = false,
+        platform: String = "youtube",
         folder: Folder? = nil
     ) {
         self.id = UUID()
@@ -34,6 +36,7 @@ final class VideoRecord {
         self.lastTimestamp = lastTimestamp
         self.note = note
         self.needsEnrichment = needsEnrichment
+        self.platform = platform
         self.folder = folder
         self.stamps = []
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0080364AA9AE88B8D263A2C6 /* BilibiliURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41782CD03FBAF26C7F7E2330 /* BilibiliURLParser.swift */; };
 		0D0112B75C4A47460A819043 /* FolderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BECE0A5850A9502684A77D /* FolderDetailView.swift */; };
 		24185BDCB554C985D6DA2362 /* PendingRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7522928DDF011D19A45AD9 /* PendingRecord.swift */; };
 		29DEF8C8DECF686C3653C498 /* FolderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BA216C7DF7F35D1CB02F0 /* FolderListView.swift */; };
@@ -45,6 +46,7 @@
 		F319F9F15B245247ECB61AD7 /* FolderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD388D446189E0691468F026 /* FolderListViewModel.swift */; };
 		F6A12F269CFDBC63531F760B /* BookmarkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F927D008D24680223A823 /* BookmarkWidget.swift */; };
 		F929B54D230C232EA5317B06 /* FolderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716D63CBAD0C72541B6484E /* FolderCardView.swift */; };
+		FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */; };
 		FFA8C5771A6DF064DD54AA6E /* EditNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +101,7 @@
 		307F927D008D24680223A823 /* BookmarkWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkWidget.swift; sourceTree = "<group>"; };
 		360E25DB89A39C5D7EE6002A /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
 		3D32BA00806DC21DB35F045D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41782CD03FBAF26C7F7E2330 /* BilibiliURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliURLParser.swift; sourceTree = "<group>"; };
 		4874E6342C65B56598AA3210 /* YTBookmark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YTBookmark.entitlements; sourceTree = "<group>"; };
 		4AE02C2FC5BB348B0EC1BDC7 /* BookmarkWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = BookmarkWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteSheet.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecord.swift; sourceTree = "<group>"; };
 		A5621170FAA0C50E8EFFFC73 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		AD388D446189E0691468F026 /* FolderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewModel.swift; sourceTree = "<group>"; };
+		B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliURLParserTests.swift; sourceTree = "<group>"; };
 		B8CFB35BFC4B1E7B37E1A13C /* WidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntry.swift; sourceTree = "<group>"; };
 		BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeURLParserTests.swift; sourceTree = "<group>"; };
 		BE059AA2E3760B6F5BFB7FEB /* YTBookmarkTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = YTBookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +196,7 @@
 		4CA5E7F648552F3E35FF38FC /* YTBookmarkTests */ = {
 			isa = PBXGroup;
 			children = (
+				B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */,
 				28846BF09E50E0D8737A8D4D /* YouTubeAPIServiceTests.swift */,
 				BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */,
 				2FD3B5C5BC3278007429F25D /* YTBookmarkTests.swift */,
@@ -309,6 +314,7 @@
 		F71BE92D9BF61815D4053277 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				41782CD03FBAF26C7F7E2330 /* BilibiliURLParser.swift */,
 				C0079C3C34F6E1ECEE371599 /* YouTubeURLParser.swift */,
 			);
 			path = Parsers;
@@ -467,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */,
 				D6CC720085A070AF34761751 /* YTBookmarkTests.swift in Sources */,
 				67BD076CD3A227C7C537BC21 /* YouTubeAPIServiceTests.swift in Sources */,
 				539827EA3C83A45104EE23FE /* YouTubeURLParserTests.swift in Sources */,
@@ -489,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0080364AA9AE88B8D263A2C6 /* BilibiliURLParser.swift in Sources */,
 				88838F1A7645C56AE54090F2 /* BookmarkListView.swift in Sources */,
 				7CC33A606C36DD8B7342029C /* BookmarkListViewModel.swift in Sources */,
 				7D363A8B5A877491FBDDF693 /* BookmarkRepository.swift in Sources */,
