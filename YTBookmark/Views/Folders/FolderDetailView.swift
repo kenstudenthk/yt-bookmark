@@ -68,7 +68,7 @@ struct FolderDetailView: View {
         ContentUnavailableView(
             "No Bookmarks",
             systemImage: "bookmark.slash",
-            description: Text("Move bookmarks here from the main list.")
+            description: Text("No bookmarks in this folder yet.")
         )
     }
 }

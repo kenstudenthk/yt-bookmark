@@ -76,7 +76,7 @@ final class ShareViewModel {
 
     private func process(urlString: String) {
         guard let parsed = YouTubeURLParser.parse(urlString) else {
-            state = .invalid(message: "Not a YouTube link.")
+            state = .invalid(message: "Not a YouTube link")
             return
         }
         state = .ready(parsed: parsed)

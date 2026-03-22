@@ -57,6 +57,7 @@ struct SearchView: View {
             }
         }
         .listStyle(.plain)
+        .scrollDismissesKeyboard(.immediately)
     }
 
     // MARK: - Prompt State

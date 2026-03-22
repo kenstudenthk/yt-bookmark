@@ -147,13 +147,13 @@
 - [x] Commit: feat: implement WidgetKit
 
 ### 3D. Reality Check
-- [ ] Full end-to-end validation against SPEC.md
-- [ ] Test: no internet when saving
-- [ ] Test: YouTube App not installed (Safari fallback)
-- [ ] Test: duplicate records
-- [ ] Test: widget tap opens YouTube
-- [ ] Test: onboarding first launch / skipped after
-- [ ] Sign off before Phase 4
+- [x] Full end-to-end validation against SPEC.md
+- [x] Test: no internet when saving
+- [x] Test: YouTube App not installed (Safari fallback)
+- [x] Test: duplicate records
+- [x] Test: widget tap opens YouTube
+- [x] Test: onboarding first launch / skipped after
+- [x] Sign off before Phase 4
 
 ---
 
