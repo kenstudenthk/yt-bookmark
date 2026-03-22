@@ -31,10 +31,12 @@
 		88838F1A7645C56AE54090F2 /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F09D3C0FB41B55B84A39C6B /* BookmarkListView.swift */; };
 		956A0472411DFD2A77F29171 /* Config.xcconfig.template in Resources */ = {isa = PBXBuildFile; fileRef = 4EE13F0FD3521116D7FB96B4 /* Config.xcconfig.template */; };
 		AF98CB19E1D73703265A32B1 /* BookmarkWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4AE02C2FC5BB348B0EC1BDC7 /* BookmarkWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC7E82F62F3EB0EE0B1A4633 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F685502E6D90FA1FE7EFE /* SearchView.swift */; };
 		CB14703762870BDD63AF7FED /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 656FE36CC08508E34FF0CBA6 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D699269CCA9F2EEB875E81B8 /* PendingRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7522928DDF011D19A45AD9 /* PendingRecord.swift */; };
 		D6CC720085A070AF34761751 /* YTBookmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3B5C5BC3278007429F25D /* YTBookmarkTests.swift */; };
 		D786A42997C16177D03771B3 /* YouTubeURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0079C3C34F6E1ECEE371599 /* YouTubeURLParser.swift */; };
+		D79AC748A2A911F532496E94 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AF27E129A6B9F0337EB1B /* SearchViewModel.swift */; };
 		DA766C304241F3CA47D254D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D32BA00806DC21DB35F045D /* Assets.xcassets */; };
 		DB9D9FC97C823AE1301CCAA8 /* WidgetDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0071F0B9D76B3367DEE2E2 /* WidgetDataService.swift */; };
 		DD107B3873EB9FF2266AC529 /* YTBookmarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B2733CA036526F35D72AE0 /* YTBookmarkApp.swift */; };
@@ -108,7 +110,9 @@
 		83B2733CA036526F35D72AE0 /* YTBookmarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTBookmarkApp.swift; sourceTree = "<group>"; };
 		85BD49DDC3CF9F871111C53D /* PendingRecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRecordService.swift; sourceTree = "<group>"; };
 		864B3A55CFF3C10E3DDA05E9 /* YouTubeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeAPIService.swift; sourceTree = "<group>"; };
+		8B8F685502E6D90FA1FE7EFE /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		986C8F65E659E622F52E1A2E /* ShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewModel.swift; sourceTree = "<group>"; };
+		992AF27E129A6B9F0337EB1B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9B0BA216C7DF7F35D1CB02F0 /* FolderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListView.swift; sourceTree = "<group>"; };
 		9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecord.swift; sourceTree = "<group>"; };
 		A5621170FAA0C50E8EFFFC73 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				FC29AD78FC57B8A9859ABE18 /* BookmarkListViewModel.swift */,
 				AD388D446189E0691468F026 /* FolderListViewModel.swift */,
+				992AF27E129A6B9F0337EB1B /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 		7B734468286105141DFDE497 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				8B8F685502E6D90FA1FE7EFE /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -494,6 +500,8 @@
 				37CFD38BECF6F23A46868B37 /* MoveFolderSheet.swift in Sources */,
 				24185BDCB554C985D6DA2362 /* PendingRecord.swift in Sources */,
 				5550AD428A1430F40CD90B47 /* PendingRecordService.swift in Sources */,
+				BC7E82F62F3EB0EE0B1A4633 /* SearchView.swift in Sources */,
+				D79AC748A2A911F532496E94 /* SearchViewModel.swift in Sources */,
 				7A5BF858679D6DDDD4956428 /* VideoRecord.swift in Sources */,
 				DB9D9FC97C823AE1301CCAA8 /* WidgetDataService.swift in Sources */,
 				DD107B3873EB9FF2266AC529 /* YTBookmarkApp.swift in Sources */,

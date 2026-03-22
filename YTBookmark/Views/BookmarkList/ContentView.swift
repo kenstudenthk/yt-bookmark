@@ -64,8 +64,7 @@ struct ContentView: View {
     private func sheetContent(for sheet: ActiveSheet) -> some View {
         switch sheet {
         case .search:
-            // Phase 2D: SearchView()
-            Text("Search — coming in Phase 2D")
+            SearchView()
         case .editNote(let record):
             EditNoteSheet(record: record)
         case .moveToFolder(let record):

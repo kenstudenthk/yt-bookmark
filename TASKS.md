@@ -107,11 +107,11 @@
 - [x] Commit: feat: implement Folder views
 
 ### 2D. Search View
-- [ ] Implement SearchView with search bar
-- [ ] Implement SearchViewModel with 300ms debounce
-- [ ] In-memory filter on VideoRecord.title (case-insensitive)
-- [ ] Implement empty result state
-- [ ] Commit: feat: implement Search
+- [x] Implement SearchView with search bar
+- [x] Implement SearchViewModel with 300ms debounce
+- [x] In-memory filter on VideoRecord.title (case-insensitive)
+- [x] Implement empty result state
+- [x] Commit: feat: implement Search
 
 ### 2E. Evidence Collection
 - [ ] Verify all screens match UX-ARCHITECTURE.md
