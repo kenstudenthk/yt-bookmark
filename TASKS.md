@@ -160,15 +160,15 @@
 ## Phase 4 — App Store
 
 ### 4A. Legal & Compliance
-- [ ] Verify YouTube Data API Terms of Service compliance
-- [ ] Generate Privacy Policy template
-- [ ] Confirm App Store Review Guidelines compliance
+- [x] Verify YouTube Data API Terms of Service compliance
+- [x] Generate Privacy Policy template
+- [x] Confirm App Store Review Guidelines compliance
 
 ### 4B. App Store Optimisation
-- [ ] Write App Store title (max 30 chars)
-- [ ] Write subtitle and description
-- [ ] Suggest keywords for ASO
-- [ ] Write screenshot captions for each feature
+- [x] Write App Store title (max 30 chars)
+- [x] Write subtitle and description
+- [x] Suggest keywords for ASO
+- [x] Write screenshot captions for each feature
 
 ---
 
