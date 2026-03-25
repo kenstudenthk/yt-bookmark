@@ -19,6 +19,7 @@ enum ActiveSheet: Identifiable {
     case editNote(VideoRecord)
     case moveToFolder(VideoRecord)
     case conflictResolution
+    case manualAdd
 
     var id: String {
         switch self {
@@ -26,6 +27,7 @@ enum ActiveSheet: Identifiable {
         case .editNote(let r):         "editNote-\(r.id)"
         case .moveToFolder(let r):     "moveToFolder-\(r.id)"
         case .conflictResolution:      "conflictResolution"
+        case .manualAdd:               "manualAdd"
         }
     }
 }
@@ -79,6 +81,8 @@ struct ContentView: View {
             MoveFolderSheet(record: record)
         case .conflictResolution:
             ConflictSheet()
+        case .manualAdd:
+            ManualAddSheet()
         }
     }
 }

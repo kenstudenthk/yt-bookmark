@@ -110,5 +110,13 @@ struct BookmarkListView: View {
                     .accessibilityLabel("Search")
             }
         }
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                navigationStore.activeSheet = .manualAdd
+            } label: {
+                Image(systemName: "plus")
+                    .accessibilityLabel("添加书签")
+            }
+        }
     }
 }

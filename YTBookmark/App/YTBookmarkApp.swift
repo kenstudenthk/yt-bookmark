@@ -20,12 +20,11 @@ struct YTBookmarkApp: App {
         container  = c
         let repo   = BookmarkRepository(context: c.mainContext)
         repository = repo
-        _pendingRecordService = State(
-            wrappedValue: PendingRecordService(repository: repo)
-        )
-        _conflictStore = State(
-            wrappedValue: ConflictStore(repository: repo)
-        )
+        let store = ConflictStore(repository: repo)
+        _conflictStore = State(wrappedValue: store)
+        let svc = PendingRecordService(repository: repo)
+        svc.conflictStore = store
+        _pendingRecordService = State(wrappedValue: svc)
     }
 
     var body: some Scene {
