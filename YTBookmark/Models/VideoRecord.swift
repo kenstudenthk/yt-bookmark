@@ -12,6 +12,7 @@ final class VideoRecord {
     var note: String
     var needsEnrichment: Bool
     var platform: String          // "youtube" | "bilibili"
+    var savingMethod: SavingMethod = SavingMethod.ask
     var folder: Folder?
 
     @Relationship(deleteRule: .cascade, inverse: \BookmarkStamp.video)

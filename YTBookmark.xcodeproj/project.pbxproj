@@ -27,6 +27,8 @@
 		70D5C66B4E71F02A10E1BB99 /* BookmarkStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEFBB50A4F39AA04DD5D192 /* BookmarkStamp.swift */; };
 		72C49755AD1D0D757E7AF008 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE58F3329327C351577CF89 /* ShareView.swift */; };
 		7A5BF858679D6DDDD4956428 /* VideoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */; };
+		C3D4E5F6A7B8C9D0E1F2A3B4 /* SavingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* SavingMethod.swift */; };
+		D4E5F6A7B8C9D0E1F2A3B4C5 /* SavingMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */; };
 		7CC33A606C36DD8B7342029C /* BookmarkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC29AD78FC57B8A9859ABE18 /* BookmarkListViewModel.swift */; };
 		7D363A8B5A877491FBDDF693 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E25DB89A39C5D7EE6002A /* BookmarkRepository.swift */; };
 		7FD817470D3DDFBEEE808FDC /* BookmarkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48414A3255545AFF74E587D /* BookmarkRowView.swift */; };
@@ -105,14 +107,14 @@
 		3D32BA00806DC21DB35F045D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41782CD03FBAF26C7F7E2330 /* BilibiliURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliURLParser.swift; sourceTree = "<group>"; };
 		4874E6342C65B56598AA3210 /* YTBookmark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YTBookmark.entitlements; sourceTree = "<group>"; };
-		4AE02C2FC5BB348B0EC1BDC7 /* BookmarkWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = BookmarkWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AE02C2FC5BB348B0EC1BDC7 /* BookmarkWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BookmarkWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteSheet.swift; sourceTree = "<group>"; };
-		4EE13F0FD3521116D7FB96B4 /* Config.xcconfig.template */ = {isa = PBXFileReference; path = Config.xcconfig.template; sourceTree = "<group>"; };
+		4EE13F0FD3521116D7FB96B4 /* Config.xcconfig.template */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.xcconfig.template; sourceTree = "<group>"; };
 		55130C5ED3CC59851C9FED55 /* CreateFolderSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderSheet.swift; sourceTree = "<group>"; };
-		587ABA8ECB0CF25725CC5726 /* YTBookmark.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = YTBookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		587ABA8ECB0CF25725CC5726 /* YTBookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YTBookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DCA0AE12563D249D36E43E9 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		62FB088B44E10B7AA4721526 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		656FE36CC08508E34FF0CBA6 /* ShareExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		656FE36CC08508E34FF0CBA6 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FE58F3329327C351577CF89 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		7FD9B619BB3724646D4452C8 /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		83B2733CA036526F35D72AE0 /* YTBookmarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTBookmarkApp.swift; sourceTree = "<group>"; };
@@ -123,13 +125,15 @@
 		992AF27E129A6B9F0337EB1B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		9B0BA216C7DF7F35D1CB02F0 /* FolderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListView.swift; sourceTree = "<group>"; };
 		9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRecord.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* SavingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingMethod.swift; sourceTree = "<group>"; };
+		B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingMethodTests.swift; sourceTree = "<group>"; };
 		A5621170FAA0C50E8EFFFC73 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		AD388D446189E0691468F026 /* FolderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewModel.swift; sourceTree = "<group>"; };
 		B40B17DEF16205739FA64FCB /* BilibiliAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliAPIService.swift; sourceTree = "<group>"; };
 		B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BilibiliURLParserTests.swift; sourceTree = "<group>"; };
 		B8CFB35BFC4B1E7B37E1A13C /* WidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntry.swift; sourceTree = "<group>"; };
 		BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeURLParserTests.swift; sourceTree = "<group>"; };
-		BE059AA2E3760B6F5BFB7FEB /* YTBookmarkTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = YTBookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE059AA2E3760B6F5BFB7FEB /* YTBookmarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YTBookmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE0FC707A1B299856A510D3 /* DeepLinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkService.swift; sourceTree = "<group>"; };
 		C0079C3C34F6E1ECEE371599 /* YouTubeURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeURLParser.swift; sourceTree = "<group>"; };
 		CE7522928DDF011D19A45AD9 /* PendingRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRecord.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */,
+				B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */,
 				28846BF09E50E0D8737A8D4D /* YouTubeAPIServiceTests.swift */,
 				BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */,
 				2FD3B5C5BC3278007429F25D /* YTBookmarkTests.swift */,
@@ -330,6 +335,7 @@
 				EAEFBB50A4F39AA04DD5D192 /* BookmarkStamp.swift */,
 				7FD9B619BB3724646D4452C8 /* Folder.swift */,
 				CE7522928DDF011D19A45AD9 /* PendingRecord.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* SavingMethod.swift */,
 				9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */,
 			);
 			path = Models;
@@ -421,19 +427,15 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					13E820D03023D5D463695863 = {
-						DevelopmentTeam = 467H2GUMWN;
 						ProvisioningStyle = Automatic;
 					};
 					3204A4615B8F54B40D69549A = {
-						DevelopmentTeam = 467H2GUMWN;
 						ProvisioningStyle = Automatic;
 					};
 					C5B8D9F5AC2164D09192B9CA = {
-						DevelopmentTeam = 467H2GUMWN;
 						ProvisioningStyle = Automatic;
 					};
 					D22084C1713A904CAA4AD0CC = {
-						DevelopmentTeam = 467H2GUMWN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -478,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */,
+				D4E5F6A7B8C9D0E1F2A3B4C5 /* SavingMethodTests.swift in Sources */,
 				D6CC720085A070AF34761751 /* YTBookmarkTests.swift in Sources */,
 				67BD076CD3A227C7C537BC21 /* YouTubeAPIServiceTests.swift in Sources */,
 				539827EA3C83A45104EE23FE /* YouTubeURLParserTests.swift in Sources */,
@@ -523,6 +526,7 @@
 				5550AD428A1430F40CD90B47 /* PendingRecordService.swift in Sources */,
 				BC7E82F62F3EB0EE0B1A4633 /* SearchView.swift in Sources */,
 				D79AC748A2A911F532496E94 /* SearchViewModel.swift in Sources */,
+				C3D4E5F6A7B8C9D0E1F2A3B4 /* SavingMethod.swift in Sources */,
 				7A5BF858679D6DDDD4956428 /* VideoRecord.swift in Sources */,
 				DB9D9FC97C823AE1301CCAA8 /* WidgetDataService.swift in Sources */,
 				DD107B3873EB9FF2266AC529 /* YTBookmarkApp.swift in Sources */,
@@ -566,7 +570,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BookmarkWidget/BookmarkWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				INFOPLIST_FILE = BookmarkWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,7 +590,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BookmarkWidget/BookmarkWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				INFOPLIST_FILE = BookmarkWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -669,7 +673,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -690,7 +694,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -770,7 +774,7 @@
 				CODE_SIGN_ENTITLEMENTS = YTBookmark/YTBookmark.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				INFOPLIST_FILE = YTBookmark/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -792,7 +796,7 @@
 				CODE_SIGN_ENTITLEMENTS = YTBookmark/YTBookmark.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				INFOPLIST_FILE = YTBookmark/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -811,7 +815,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -831,7 +835,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 467H2GUMWN;
+				DEVELOPMENT_TEAM = 6UURC25F7N;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
