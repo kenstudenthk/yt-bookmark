@@ -59,6 +59,9 @@
 		A2B3C4D5E6F7A8B9C0D1E2F3 /* ConflictStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D5E6F7A8B9C0D1E2F3A4 /* ConflictStore.swift */; };
 		C4D5E6F7A8B9C0D1E2F3A4B5 /* ConflictStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E6F7A8B9C0D1E2F3A4B5C6 /* ConflictStoreTests.swift */; };
 		E8F9A0B1C2D3E4F5A6B7C8D9 /* PendingRecordServiceDuplicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A0B1C2D3E4F5A6B7C8D9E0 /* PendingRecordServiceDuplicateTests.swift */; };
+		A4B5C6D7E8F9A0B1C2D3E4F5 /* ManualAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6D7E8F9A0B1C2D3E4F5A6 /* ManualAddViewModel.swift */; };
+		C6D7E8F9A0B1C2D3E4F5A6B7 /* ManualAddSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E8F9A0B1C2D3E4F5A6B7C8 /* ManualAddSheet.swift */; };
+		E9F0A1B2C3D4E5F6A7B8C9D0 /* ManualAddViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A1B2C3D4E5F6A7B8C9D0E2 /* ManualAddViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +162,9 @@
 		B3C4D5E6F7A8B9C0D1E2F3A4 /* ConflictStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictStore.swift; sourceTree = "<group>"; };
 		D5E6F7A8B9C0D1E2F3A4B5C6 /* ConflictStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictStoreTests.swift; sourceTree = "<group>"; };
 		F9A0B1C2D3E4F5A6B7C8D9E0 /* PendingRecordServiceDuplicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRecordServiceDuplicateTests.swift; sourceTree = "<group>"; };
+		B5C6D7E8F9A0B1C2D3E4F5A6 /* ManualAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualAddViewModel.swift; sourceTree = "<group>"; };
+		D7E8F9A0B1C2D3E4F5A6B7C8 /* ManualAddSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualAddSheet.swift; sourceTree = "<group>"; };
+		F0A1B2C3D4E5F6A7B8C9D0E2 /* ManualAddViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualAddViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -201,6 +207,7 @@
 			children = (
 				FC29AD78FC57B8A9859ABE18 /* BookmarkListViewModel.swift */,
 				AD388D446189E0691468F026 /* FolderListViewModel.swift */,
+				B5C6D7E8F9A0B1C2D3E4F5A6 /* ManualAddViewModel.swift */,
 				992AF27E129A6B9F0337EB1B /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
@@ -220,6 +227,7 @@
 				B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */,
 				E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */,
 				D5E6F7A8B9C0D1E2F3A4B5C6 /* ConflictStoreTests.swift */,
+				F0A1B2C3D4E5F6A7B8C9D0E2 /* ManualAddViewModelTests.swift */,
 				F9A0B1C2D3E4F5A6B7C8D9E0 /* PendingRecordServiceDuplicateTests.swift */,
 				B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */,
 				A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */,
@@ -238,6 +246,7 @@
 				B4C5D6E7F8A9B0C1D2E3F4A5 /* ConflictSheet.swift */,
 				DC0BF6282C9FCC7F4D001090 /* ContentView.swift */,
 				4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */,
+				D7E8F9A0B1C2D3E4F5A6B7C8 /* ManualAddSheet.swift */,
 			);
 			path = BookmarkList;
 			sourceTree = "<group>";
@@ -503,6 +512,7 @@
 				FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */,
 				C5D6E7F8A9B0C1D2E3F4A5B6 /* BookmarkRepositoryDuplicateTests.swift in Sources */,
 				C4D5E6F7A8B9C0D1E2F3A4B5 /* ConflictStoreTests.swift in Sources */,
+				E9F0A1B2C3D4E5F6A7B8C9D0 /* ManualAddViewModelTests.swift in Sources */,
 				E8F9A0B1C2D3E4F5A6B7C8D9 /* PendingRecordServiceDuplicateTests.swift in Sources */,
 				D4E5F6A7B8C9D0E1F2A3B4C5 /* SavingMethodTests.swift in Sources */,
 				F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */,
@@ -560,6 +570,8 @@
 				DD107B3873EB9FF2266AC529 /* YTBookmarkApp.swift in Sources */,
 				8856FE494630973713FD92B7 /* YouTubeAPIService.swift in Sources */,
 				54003C1AA70DDE693D42DD50 /* YouTubeURLParser.swift in Sources */,
+				A4B5C6D7E8F9A0B1C2D3E4F5 /* ManualAddViewModel.swift in Sources */,
+				C6D7E8F9A0B1C2D3E4F5A6B7 /* ManualAddSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
