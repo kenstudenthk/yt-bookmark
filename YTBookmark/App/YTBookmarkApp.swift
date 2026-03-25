@@ -9,6 +9,7 @@ struct YTBookmarkApp: App {
 
     @State private var pendingRecordService: PendingRecordService
     @State private var navigationStore = NavigationStore()
+    @State private var conflictStore: ConflictStore
     @State private var hasCompletedOnboarding =
         UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
 
@@ -22,6 +23,9 @@ struct YTBookmarkApp: App {
         _pendingRecordService = State(
             wrappedValue: PendingRecordService(repository: repo)
         )
+        _conflictStore = State(
+            wrappedValue: ConflictStore(repository: repo)
+        )
     }
 
     var body: some Scene {
@@ -29,6 +33,7 @@ struct YTBookmarkApp: App {
             ContentView()
                 .environment(pendingRecordService)
                 .environment(navigationStore)
+                .environment(conflictStore)
                 .onOpenURL { url in
                     handleDeepLink(url)
                 }

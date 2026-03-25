@@ -53,6 +53,7 @@
 		FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */; };
 		C5D6E7F8A9B0C1D2E3F4A5B6 /* BookmarkRepositoryDuplicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */; };
 		FFA8C5771A6DF064DD54AA6E /* EditNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */; };
+		A3B4C5D6E7F8A9B0C1D2E3F4 /* ConflictSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5D6E7F8A9B0C1D2E3F4A5 /* ConflictSheet.swift */; };
 		E1F2A3B4C5D6E7F8A9B0C1D2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */; };
 		F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */; };
 		A2B3C4D5E6F7A8B9C0D1E2F3 /* ConflictStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D5E6F7A8B9C0D1E2F3A4 /* ConflictStore.swift */; };
@@ -115,6 +116,7 @@
 		4874E6342C65B56598AA3210 /* YTBookmark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YTBookmark.entitlements; sourceTree = "<group>"; };
 		4AE02C2FC5BB348B0EC1BDC7 /* BookmarkWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BookmarkWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteSheet.swift; sourceTree = "<group>"; };
+		B4C5D6E7F8A9B0C1D2E3F4A5 /* ConflictSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictSheet.swift; sourceTree = "<group>"; };
 		4EE13F0FD3521116D7FB96B4 /* Config.xcconfig.template */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.xcconfig.template; sourceTree = "<group>"; };
 		55130C5ED3CC59851C9FED55 /* CreateFolderSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderSheet.swift; sourceTree = "<group>"; };
 		587ABA8ECB0CF25725CC5726 /* YTBookmark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YTBookmark.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +235,7 @@
 			children = (
 				1F09D3C0FB41B55B84A39C6B /* BookmarkListView.swift */,
 				F48414A3255545AFF74E587D /* BookmarkRowView.swift */,
+				B4C5D6E7F8A9B0C1D2E3F4A5 /* ConflictSheet.swift */,
 				DC0BF6282C9FCC7F4D001090 /* ContentView.swift */,
 				4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */,
 			);
@@ -530,6 +533,7 @@
 				0080364AA9AE88B8D263A2C6 /* BilibiliURLParser.swift in Sources */,
 				88838F1A7645C56AE54090F2 /* BookmarkListView.swift in Sources */,
 				A2B3C4D5E6F7A8B9C0D1E2F3 /* ConflictStore.swift in Sources */,
+				A3B4C5D6E7F8A9B0C1D2E3F4 /* ConflictSheet.swift in Sources */,
 				7CC33A606C36DD8B7342029C /* BookmarkListViewModel.swift in Sources */,
 				7D363A8B5A877491FBDDF693 /* BookmarkRepository.swift in Sources */,
 				7FD817470D3DDFBEEE808FDC /* BookmarkRowView.swift in Sources */,

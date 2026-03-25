@@ -2,7 +2,7 @@ import Foundation
 import Observation
 
 // Data describing the new bookmark being added (not yet persisted)
-struct IncomingBookmark {
+struct IncomingBookmark: Equatable {
     let videoID: String
     let title: String
     let thumbnailURL: String
@@ -11,12 +11,23 @@ struct IncomingBookmark {
     let needsEnrichment: Bool
     let platform: String
     let folder: Folder?
+
+    static func == (lhs: IncomingBookmark, rhs: IncomingBookmark) -> Bool {
+        lhs.videoID == rhs.videoID &&
+        lhs.timestamp == rhs.timestamp &&
+        lhs.note == rhs.note
+    }
 }
 
 // Holds both sides of a duplicate conflict
-struct DuplicateConflict {
+struct DuplicateConflict: Equatable {
     let incoming: IncomingBookmark
     let existing: VideoRecord
+
+    static func == (lhs: DuplicateConflict, rhs: DuplicateConflict) -> Bool {
+        lhs.incoming == rhs.incoming &&
+        lhs.existing.id == rhs.existing.id
+    }
 }
 
 @Observable

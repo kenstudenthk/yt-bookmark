@@ -18,12 +18,14 @@ enum ActiveSheet: Identifiable {
     case search
     case editNote(VideoRecord)
     case moveToFolder(VideoRecord)
+    case conflictResolution
 
     var id: String {
         switch self {
         case .search:                  "search"
         case .editNote(let r):         "editNote-\(r.id)"
         case .moveToFolder(let r):     "moveToFolder-\(r.id)"
+        case .conflictResolution:      "conflictResolution"
         }
     }
 }
@@ -34,6 +36,7 @@ struct ContentView: View {
 
     @Environment(PendingRecordService.self) private var pendingRecordService
     @Environment(NavigationStore.self)      private var navigationStore
+    @Environment(ConflictStore.self)        private var conflictStore
 
     var body: some View {
         NavigationStack(path: Binding(
@@ -56,6 +59,11 @@ struct ContentView: View {
             }
         }
         .animation(.spring(response: 0.4, dampingFraction: 0.7), value: pendingRecordService.toastMessage)
+        .onChange(of: conflictStore.pendingConflict) { _, conflict in
+            if conflict != nil {
+                navigationStore.activeSheet = .conflictResolution
+            }
+        }
     }
 
     // MARK: - Sheet Content
@@ -69,6 +77,8 @@ struct ContentView: View {
             EditNoteSheet(record: record)
         case .moveToFolder(let record):
             MoveFolderSheet(record: record)
+        case .conflictResolution:
+            ConflictSheet()
         }
     }
 }
