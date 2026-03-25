@@ -87,4 +87,18 @@ final class ConflictStoreTests: XCTestCase {
         try store.resolveAddNew()
         XCTAssertEqual(conflict.existing.lastTimestamp, originalTimestamp)
     }
+
+    func test_resolveCover_withRememberAs_updatesSavingMethod() throws {
+        let conflict = try makeConflict()
+        store.raise(conflict)
+        try store.resolveCover(rememberAs: .cover)
+        XCTAssertEqual(conflict.existing.savingMethod, .cover)
+    }
+
+    func test_resolveAddNew_withRememberAs_updatesSavingMethod() throws {
+        let conflict = try makeConflict()
+        store.raise(conflict)
+        try store.resolveAddNew(rememberAs: .addNew)
+        XCTAssertEqual(conflict.existing.savingMethod, .addNew)
+    }
 }

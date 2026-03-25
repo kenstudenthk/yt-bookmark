@@ -1,15 +1,9 @@
 import SwiftUI
-import SwiftData
 
 struct ConflictSheet: View {
     @Environment(ConflictStore.self) private var conflictStore
-    @Environment(\.modelContext) private var modelContext
     @State private var rememberChoice = false
     @State private var errorMessage: String?
-
-    private var repository: BookmarkRepository {
-        BookmarkRepository(context: modelContext)
-    }
 
     var body: some View {
         if let conflict = conflictStore.pendingConflict {
@@ -119,14 +113,12 @@ struct ConflictSheet: View {
 
     private func resolve(choice: SavingMethod, conflict: DuplicateConflict) {
         do {
-            if rememberChoice {
-                try repository.updateSavingMethod(on: conflict.existing, method: choice)
-            }
+            let methodToRemember: SavingMethod? = rememberChoice ? choice : nil
             switch choice {
             case .cover:
-                try conflictStore.resolveCover()
+                try conflictStore.resolveCover(rememberAs: methodToRemember)
             case .addNew, .ask:
-                try conflictStore.resolveAddNew()
+                try conflictStore.resolveAddNew(rememberAs: methodToRemember)
             }
         } catch {
             errorMessage = error.localizedDescription

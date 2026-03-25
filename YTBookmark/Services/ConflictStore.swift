@@ -46,20 +46,29 @@ final class ConflictStore {
         pendingConflict = conflict
     }
 
-    /// User chose "Cover existing record" — update timestamp + note
-    func resolveCover() throws {
+    /// User chose "Cover existing record" — update timestamp + note.
+    /// Pass a `SavingMethod` to `rememberAs` to persist the per-video preference.
+    func resolveCover(rememberAs method: SavingMethod? = nil) throws {
         guard let conflict = pendingConflict else { return }
+        if let method = method {
+            try repository.updateSavingMethod(on: conflict.existing, method: method)
+        }
         try repository.coverRecord(
             conflict.existing,
             timestamp: conflict.incoming.timestamp,
             note: conflict.incoming.note
         )
         pendingConflict = nil
+        refreshWidgetData()
     }
 
-    /// User chose "Add New record" — create a separate record
-    func resolveAddNew() throws {
+    /// User chose "Add New record" — create a separate record.
+    /// Pass a `SavingMethod` to `rememberAs` to persist the per-video preference.
+    func resolveAddNew(rememberAs method: SavingMethod? = nil) throws {
         guard let conflict = pendingConflict else { return }
+        if let method = method {
+            try repository.updateSavingMethod(on: conflict.existing, method: method)
+        }
         let b = conflict.incoming
         _ = try repository.createRecord(
             videoID: b.videoID,
@@ -72,10 +81,18 @@ final class ConflictStore {
             platform: b.platform
         )
         pendingConflict = nil
+        refreshWidgetData()
     }
 
     /// User dismissed without choosing — discard incoming
     func dismiss() {
         pendingConflict = nil
+    }
+
+    // MARK: - Private
+
+    private func refreshWidgetData() {
+        let recent = (try? repository.fetchRecentRecords(limit: 5)) ?? []
+        WidgetDataService.update(with: recent)
     }
 }
