@@ -55,6 +55,8 @@
 		FFA8C5771A6DF064DD54AA6E /* EditNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */; };
 		E1F2A3B4C5D6E7F8A9B0C1D2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */; };
 		F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */; };
+		A2B3C4D5E6F7A8B9C0D1E2F3 /* ConflictStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D5E6F7A8B9C0D1E2F3A4 /* ConflictStore.swift */; };
+		C4D5E6F7A8B9C0D1E2F3A4B5 /* ConflictStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E6F7A8B9C0D1E2F3A4B5C6 /* ConflictStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +153,8 @@
 		D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesTests.swift; sourceTree = "<group>"; };
 		E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepositoryDuplicateTests.swift; sourceTree = "<group>"; };
+		B3C4D5E6F7A8B9C0D1E2F3A4 /* ConflictStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictStore.swift; sourceTree = "<group>"; };
+		D5E6F7A8B9C0D1E2F3A4B5C6 /* ConflictStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -211,6 +215,7 @@
 			children = (
 				B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */,
 				E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */,
+				D5E6F7A8B9C0D1E2F3A4B5C6 /* ConflictStoreTests.swift */,
 				B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */,
 				A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */,
 				28846BF09E50E0D8737A8D4D /* YouTubeAPIServiceTests.swift */,
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				B40B17DEF16205739FA64FCB /* BilibiliAPIService.swift */,
+				B3C4D5E6F7A8B9C0D1E2F3A4 /* ConflictStore.swift */,
 				BEE0FC707A1B299856A510D3 /* DeepLinkService.swift */,
 				85BD49DDC3CF9F871111C53D /* PendingRecordService.swift */,
 				FA0071F0B9D76B3367DEE2E2 /* WidgetDataService.swift */,
@@ -490,6 +496,7 @@
 			files = (
 				FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */,
 				C5D6E7F8A9B0C1D2E3F4A5B6 /* BookmarkRepositoryDuplicateTests.swift in Sources */,
+				C4D5E6F7A8B9C0D1E2F3A4B5 /* ConflictStoreTests.swift in Sources */,
 				D4E5F6A7B8C9D0E1F2A3B4C5 /* SavingMethodTests.swift in Sources */,
 				F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */,
 				D6CC720085A070AF34761751 /* YTBookmarkTests.swift in Sources */,
@@ -518,6 +525,7 @@
 				66ACB5BCB830CD5578D3CCAD /* BilibiliAPIService.swift in Sources */,
 				0080364AA9AE88B8D263A2C6 /* BilibiliURLParser.swift in Sources */,
 				88838F1A7645C56AE54090F2 /* BookmarkListView.swift in Sources */,
+				A2B3C4D5E6F7A8B9C0D1E2F3 /* ConflictStore.swift in Sources */,
 				7CC33A606C36DD8B7342029C /* BookmarkListViewModel.swift in Sources */,
 				7D363A8B5A877491FBDDF693 /* BookmarkRepository.swift in Sources */,
 				7FD817470D3DDFBEEE808FDC /* BookmarkRowView.swift in Sources */,
