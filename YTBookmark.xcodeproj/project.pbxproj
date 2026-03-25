@@ -52,6 +52,8 @@
 		F929B54D230C232EA5317B06 /* FolderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716D63CBAD0C72541B6484E /* FolderCardView.swift */; };
 		FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */; };
 		FFA8C5771A6DF064DD54AA6E /* EditNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */; };
+		E1F2A3B4C5D6E7F8A9B0C1D2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */; };
+		F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		F48414A3255545AFF74E587D /* BookmarkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRowView.swift; sourceTree = "<group>"; };
 		FA0071F0B9D76B3367DEE2E2 /* WidgetDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataService.swift; sourceTree = "<group>"; };
 		FC29AD78FC57B8A9859ABE18 /* BookmarkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewModel.swift; sourceTree = "<group>"; };
+		D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -205,6 +209,7 @@
 			children = (
 				B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */,
 				B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */,
+				A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */,
 				28846BF09E50E0D8737A8D4D /* YouTubeAPIServiceTests.swift */,
 				BA4894694B23C44BC1020612 /* YouTubeURLParserTests.swift */,
 				2FD3B5C5BC3278007429F25D /* YTBookmarkTests.swift */,
@@ -336,6 +341,7 @@
 				7FD9B619BB3724646D4452C8 /* Folder.swift */,
 				CE7522928DDF011D19A45AD9 /* PendingRecord.swift */,
 				A1B2C3D4E5F6A7B8C9D0E1F2 /* SavingMethod.swift */,
+				D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */,
 				9E989A87B766FFC6CBEEF23B /* VideoRecord.swift */,
 			);
 			path = Models;
@@ -481,6 +487,7 @@
 			files = (
 				FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */,
 				D4E5F6A7B8C9D0E1F2A3B4C5 /* SavingMethodTests.swift in Sources */,
+				F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */,
 				D6CC720085A070AF34761751 /* YTBookmarkTests.swift in Sources */,
 				67BD076CD3A227C7C537BC21 /* YouTubeAPIServiceTests.swift in Sources */,
 				539827EA3C83A45104EE23FE /* YouTubeURLParserTests.swift in Sources */,
@@ -527,6 +534,7 @@
 				BC7E82F62F3EB0EE0B1A4633 /* SearchView.swift in Sources */,
 				D79AC748A2A911F532496E94 /* SearchViewModel.swift in Sources */,
 				C3D4E5F6A7B8C9D0E1F2A3B4 /* SavingMethod.swift in Sources */,
+				E1F2A3B4C5D6E7F8A9B0C1D2 /* UserPreferences.swift in Sources */,
 				7A5BF858679D6DDDD4956428 /* VideoRecord.swift in Sources */,
 				DB9D9FC97C823AE1301CCAA8 /* WidgetDataService.swift in Sources */,
 				DD107B3873EB9FF2266AC529 /* YTBookmarkApp.swift in Sources */,
