@@ -124,4 +124,33 @@ final class BookmarkRepository {
         context.delete(folder)
         try context.save()
     }
+
+    // MARK: - VideoRecord: Duplicate Detection
+
+    /// Finds the first VideoRecord matching the given videoID, or nil if none exists.
+    func findFirstRecord(videoID: String) throws -> VideoRecord? {
+        let predicate = #Predicate<VideoRecord> { $0.videoID == videoID }
+        let descriptor = FetchDescriptor<VideoRecord>(predicate: predicate)
+        return try context.fetch(descriptor).first
+    }
+
+    /// Overwrites the timestamp and note on an existing record (Cover conflict resolution).
+    func coverRecord(_ record: VideoRecord, timestamp: Int, note: String) throws {
+        record.lastTimestamp = timestamp
+        record.note = note
+        try context.save()
+    }
+
+    /// Finds a Folder by its UUID, or nil if not found.
+    func fetchFolder(byID id: UUID) throws -> Folder? {
+        let predicate = #Predicate<Folder> { $0.id == id }
+        let descriptor = FetchDescriptor<Folder>(predicate: predicate)
+        return try context.fetch(descriptor).first
+    }
+
+    /// Updates the per-video saving method preference on an existing record.
+    func updateSavingMethod(on record: VideoRecord, method: SavingMethod) throws {
+        record.savingMethod = method
+        try context.save()
+    }
 }

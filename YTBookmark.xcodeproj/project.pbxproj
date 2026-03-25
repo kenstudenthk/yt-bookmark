@@ -51,6 +51,7 @@
 		F6A12F269CFDBC63531F760B /* BookmarkWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F927D008D24680223A823 /* BookmarkWidget.swift */; };
 		F929B54D230C232EA5317B06 /* FolderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2716D63CBAD0C72541B6484E /* FolderCardView.swift */; };
 		FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */; };
+		C5D6E7F8A9B0C1D2E3F4A5B6 /* BookmarkRepositoryDuplicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */; };
 		FFA8C5771A6DF064DD54AA6E /* EditNoteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6637E3B8F8E58AAFECA074 /* EditNoteSheet.swift */; };
 		E1F2A3B4C5D6E7F8A9B0C1D2 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */; };
 		F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */; };
@@ -149,6 +150,7 @@
 		FC29AD78FC57B8A9859ABE18 /* BookmarkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewModel.swift; sourceTree = "<group>"; };
 		D2E3F4A5B6C7D8E9F0A1B2C3 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesTests.swift; sourceTree = "<group>"; };
+		E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepositoryDuplicateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				B51AF9A82A5EE238AB0BF7F8 /* BilibiliURLParserTests.swift */,
+				E7F8A9B0C1D2E3F4A5B6C7D8 /* BookmarkRepositoryDuplicateTests.swift */,
 				B2C3D4E5F6A7B8C9D0E1F2A3 /* SavingMethodTests.swift */,
 				A9B0C1D2E3F4A5B6C7D8E9F0 /* UserPreferencesTests.swift */,
 				28846BF09E50E0D8737A8D4D /* YouTubeAPIServiceTests.swift */,
@@ -486,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE23530C028AF9D5A12F0111 /* BilibiliURLParserTests.swift in Sources */,
+				C5D6E7F8A9B0C1D2E3F4A5B6 /* BookmarkRepositoryDuplicateTests.swift in Sources */,
 				D4E5F6A7B8C9D0E1F2A3B4C5 /* SavingMethodTests.swift in Sources */,
 				F0A1B2C3D4E5F6A7B8C9D0E1 /* UserPreferencesTests.swift in Sources */,
 				D6CC720085A070AF34761751 /* YTBookmarkTests.swift in Sources */,
