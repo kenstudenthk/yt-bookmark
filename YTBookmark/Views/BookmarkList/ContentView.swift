@@ -48,8 +48,18 @@ struct ContentView: View {
             BookmarkListView()
         }
         .sheet(item: Binding(
-            get: { navigationStore.activeSheet },
-            set: { navigationStore.activeSheet = $0 }
+            get: {
+                // Conflict takes priority; accessing pendingConflict here ensures
+                // @Observable re-evaluates this getter whenever it changes.
+                if conflictStore.pendingConflict != nil {
+                    return ActiveSheet.conflictResolution
+                }
+                return navigationStore.activeSheet
+            },
+            set: { newValue in
+                navigationStore.activeSheet = newValue
+                if newValue == nil { conflictStore.dismiss() }
+            }
         )) { sheet in
             sheetContent(for: sheet)
         }
@@ -61,11 +71,6 @@ struct ContentView: View {
             }
         }
         .animation(.spring(response: 0.4, dampingFraction: 0.7), value: pendingRecordService.toastMessage)
-        .onChange(of: conflictStore.pendingConflict) { _, conflict in
-            if conflict != nil {
-                navigationStore.activeSheet = .conflictResolution
-            }
-        }
     }
 
     // MARK: - Sheet Content

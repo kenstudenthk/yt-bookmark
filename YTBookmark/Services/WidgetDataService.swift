@@ -37,6 +37,32 @@ enum WidgetDataService {
 
         return entries
     }
+
+    // MARK: - Saved Video IDs (for Share Extension duplicate detection)
+
+    private static let savedVideoIDsKey = "savedVideoIDs"
+
+    /// Writes the full set of saved video IDs to App Group so the Share Extension
+    /// can detect duplicates without accessing SwiftData.
+    static func updateSavedVideoIDs(_ ids: [String]) {
+        guard
+            let data = try? JSONEncoder().encode(ids),
+            let json = String(data: data, encoding: .utf8),
+            let defaults = UserDefaults(suiteName: appGroupID)
+        else { return }
+        defaults.set(json, forKey: savedVideoIDsKey)
+    }
+
+    /// Reads the saved video ID set from App Group (used by the Share Extension).
+    static func readSavedVideoIDs() -> Set<String> {
+        guard
+            let defaults = UserDefaults(suiteName: appGroupID),
+            let json = defaults.string(forKey: savedVideoIDsKey),
+            let data = json.data(using: .utf8),
+            let ids = try? JSONDecoder().decode([String].self, from: data)
+        else { return [] }
+        return Set(ids)
+    }
 }
 
 // MARK: - WidgetEntry

@@ -10,30 +10,43 @@ struct PendingRecord: Codable {
     let savedAt: Date
     let note: String
     let platform: String          // "youtube" | "bilibili"
+    /// Optional choice made in the Share Extension: "cover" | "addNew".
+    /// Nil means no explicit choice — main app applies its normal duplicate logic.
+    let savingMethod: String?
 
-    // MARK: - Backward-compatible decoding (platform absent in old JSON → "youtube")
+    // MARK: - Backward-compatible decoding
 
     enum CodingKeys: String, CodingKey {
-        case videoID, rawURL, timestamp, savedAt, note, platform
+        case videoID, rawURL, timestamp, savedAt, note, platform, savingMethod
     }
 
-    init(videoID: String, rawURL: String, timestamp: Int, savedAt: Date, note: String, platform: String = "youtube") {
+    init(
+        videoID: String,
+        rawURL: String,
+        timestamp: Int,
+        savedAt: Date,
+        note: String,
+        platform: String = "youtube",
+        savingMethod: String? = nil
+    ) {
         self.videoID = videoID
         self.rawURL = rawURL
         self.timestamp = timestamp
         self.savedAt = savedAt
         self.note = note
         self.platform = platform
+        self.savingMethod = savingMethod
     }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        videoID   = try c.decode(String.self, forKey: .videoID)
-        rawURL    = try c.decode(String.self, forKey: .rawURL)
-        timestamp = try c.decode(Int.self,    forKey: .timestamp)
-        savedAt   = try c.decode(Date.self,   forKey: .savedAt)
-        note      = try c.decode(String.self, forKey: .note)
-        platform  = try c.decodeIfPresent(String.self, forKey: .platform) ?? "youtube"
+        videoID       = try c.decode(String.self, forKey: .videoID)
+        rawURL        = try c.decode(String.self, forKey: .rawURL)
+        timestamp     = try c.decode(Int.self,    forKey: .timestamp)
+        savedAt       = try c.decode(Date.self,   forKey: .savedAt)
+        note          = try c.decode(String.self, forKey: .note)
+        platform      = try c.decodeIfPresent(String.self, forKey: .platform)      ?? "youtube"
+        savingMethod  = try c.decodeIfPresent(String.self, forKey: .savingMethod)
     }
 
     // MARK: - App Group

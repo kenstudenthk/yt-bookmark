@@ -27,6 +27,8 @@ final class ShareViewModel {
 
     var state: ShareState = .loading
     var note: String = ""
+    var isDuplicate: Bool = false
+    var overrideExisting: Bool = true
 
     // Alert flags
     var showPendingRecordWarning = false
@@ -90,19 +92,23 @@ final class ShareViewModel {
 
     private func process(urlString: String) {
         if let parsed = YouTubeURLParser.parse(urlString) {
+            let videoID = parsed.videoID
             state = .ready(parsed: ParsedVideoURL(
-                videoID: parsed.videoID,
+                videoID: videoID,
                 timestamp: parsed.timestamp,
                 platform: "youtube"
             ))
+            isDuplicate = savedVideoIDs().contains(videoID)
             return
         }
         if let parsed = BilibiliURLParser.parse(urlString) {
+            let videoID = parsed.videoID
             state = .ready(parsed: ParsedVideoURL(
-                videoID: parsed.videoID,
+                videoID: videoID,
                 timestamp: parsed.timestamp,
                 platform: "bilibili"
             ))
+            isDuplicate = savedVideoIDs().contains(videoID)
             return
         }
         state = .invalid(message: "Share a YouTube or Bilibili video link to bookmark it.")
@@ -131,19 +137,34 @@ final class ShareViewModel {
         return urlString
     }
 
+    // MARK: - Private: Duplicate Detection
+
+    /// Reads the saved video ID set written by the main app into App Group UserDefaults.
+    private func savedVideoIDs() -> Set<String> {
+        guard
+            let defaults = UserDefaults(suiteName: "group.com.myapp.ytbookmark"),
+            let json = defaults.string(forKey: "savedVideoIDs"),
+            let data = json.data(using: .utf8),
+            let ids = try? JSONDecoder().decode([String].self, from: data)
+        else { return [] }
+        return Set(ids)
+    }
+
     // MARK: - Private: Save
 
     private func performSave(context: NSExtensionContext) {
         guard case .ready(let parsed) = state else { return }
         state = .saving
 
+        let savingMethod: String? = isDuplicate ? (overrideExisting ? "cover" : "addNew") : nil
         let record = PendingRecord(
             videoID: parsed.videoID,
             rawURL: currentRawURL(parsed: parsed),
             timestamp: parsed.timestamp,
             savedAt: Date(),
             note: String(note.prefix(500)),
-            platform: parsed.platform
+            platform: parsed.platform,
+            savingMethod: savingMethod
         )
 
         do {

@@ -94,5 +94,7 @@ final class ConflictStore {
     private func refreshWidgetData() {
         let recent = (try? repository.fetchRecentRecords(limit: 5)) ?? []
         WidgetDataService.update(with: recent)
+        let allIDs = (try? repository.fetchAllRecords().map { $0.videoID }) ?? []
+        WidgetDataService.updateSavedVideoIDs(allIDs)
     }
 }
