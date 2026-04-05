@@ -25,4 +25,18 @@ final class FolderListViewModel {
             errorMessage = error.localizedDescription
         }
     }
+
+    // MARK: - Default Folder
+
+    func setAsDefault(folder: Folder) {
+        UserPreferences.setDefaultFolderID(folder.id)
+    }
+
+    func clearDefault() {
+        UserPreferences.clearDefaultFolderID()
+    }
+
+    var defaultFolderID: UUID? {
+        UserPreferences.defaultFolderID()
+    }
 }

@@ -10,6 +10,7 @@ struct FolderListView: View {
 
     @State private var viewModel = FolderListViewModel()
     @State private var folderPendingDelete: Folder?
+    @AppStorage("defaultFolderID") private var defaultFolderIDString: String = ""
 
     private let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -67,9 +68,32 @@ struct FolderListView: View {
                 ForEach(folders) { folder in
                     NavigationLink(value: NavigationDestination.folderDetail(folder)) {
                         FolderCardView(folder: folder)
+                            .overlay(alignment: .topTrailing) {
+                                if UUID(uuidString: defaultFolderIDString) == folder.id {
+                                    Image(systemName: "star.fill")
+                                        .font(.caption)
+                                        .foregroundStyle(.yellow)
+                                        .padding(6)
+                                }
+                            }
                     }
                     .buttonStyle(.plain)
                     .contextMenu {
+                        if UUID(uuidString: defaultFolderIDString) == folder.id {
+                            Button {
+                                viewModel.clearDefault()
+                                defaultFolderIDString = ""
+                            } label: {
+                                Label("移除默认", systemImage: "star.slash")
+                            }
+                        } else {
+                            Button {
+                                viewModel.setAsDefault(folder: folder)
+                                defaultFolderIDString = folder.id.uuidString
+                            } label: {
+                                Label("设为默认文件夹", systemImage: "star")
+                            }
+                        }
                         Button(role: .destructive) {
                             folderPendingDelete = folder
                         } label: {

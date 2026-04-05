@@ -18,12 +18,16 @@ enum ActiveSheet: Identifiable {
     case search
     case editNote(VideoRecord)
     case moveToFolder(VideoRecord)
+    case conflictResolution
+    case manualAdd
 
     var id: String {
         switch self {
         case .search:                  "search"
         case .editNote(let r):         "editNote-\(r.id)"
         case .moveToFolder(let r):     "moveToFolder-\(r.id)"
+        case .conflictResolution:      "conflictResolution"
+        case .manualAdd:               "manualAdd"
         }
     }
 }
@@ -34,6 +38,7 @@ struct ContentView: View {
 
     @Environment(PendingRecordService.self) private var pendingRecordService
     @Environment(NavigationStore.self)      private var navigationStore
+    @Environment(ConflictStore.self)        private var conflictStore
 
     var body: some View {
         NavigationStack(path: Binding(
@@ -43,8 +48,18 @@ struct ContentView: View {
             BookmarkListView()
         }
         .sheet(item: Binding(
-            get: { navigationStore.activeSheet },
-            set: { navigationStore.activeSheet = $0 }
+            get: {
+                // Conflict takes priority; accessing pendingConflict here ensures
+                // @Observable re-evaluates this getter whenever it changes.
+                if conflictStore.pendingConflict != nil {
+                    return ActiveSheet.conflictResolution
+                }
+                return navigationStore.activeSheet
+            },
+            set: { newValue in
+                navigationStore.activeSheet = newValue
+                if newValue == nil { conflictStore.dismiss() }
+            }
         )) { sheet in
             sheetContent(for: sheet)
         }
@@ -69,6 +84,10 @@ struct ContentView: View {
             EditNoteSheet(record: record)
         case .moveToFolder(let record):
             MoveFolderSheet(record: record)
+        case .conflictResolution:
+            ConflictSheet()
+        case .manualAdd:
+            ManualAddSheet()
         }
     }
 }

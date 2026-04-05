@@ -99,6 +99,27 @@ struct ShareView: View {
                     .font(.caption)
             }
 
+            // Duplicate notice
+            if viewModel.isDuplicate {
+                Section {
+                    Toggle(isOn: $viewModel.overrideExisting) {
+                        Label(
+                            viewModel.overrideExisting ? "Update existing bookmark" : "Save as new bookmark",
+                            systemImage: viewModel.overrideExisting ? "arrow.clockwise" : "plus.circle"
+                        )
+                    }
+                } header: {
+                    Text("Already Saved")
+                } footer: {
+                    Text(
+                        viewModel.overrideExisting
+                            ? "The existing bookmark for this video will be replaced."
+                            : "A second bookmark will be added alongside the existing one."
+                    )
+                    .foregroundStyle(.orange)
+                }
+            }
+
             // Note section
             Section {
                 TextField("Add a note (optional)", text: $viewModel.note, axis: .vertical)

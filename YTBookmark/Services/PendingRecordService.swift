@@ -12,6 +12,10 @@ final class PendingRecordService {
 
     private let repository: BookmarkRepository
 
+    /// Optional — set by the app after init to enable conflict-sheet routing.
+    /// If nil, duplicate detection still runs but `.ask` falls back to `.addNew` silently.
+    var conflictStore: ConflictStore?
+
     init(repository: BookmarkRepository) {
         self.repository = repository
     }
@@ -38,17 +42,78 @@ final class PendingRecordService {
         let (title, thumbnailURL, needsEnrich) = await fetchMetadata(for: pending)
 
         do {
-            try repository.createRecord(
-                videoID:         pending.videoID,
-                title:           title,
-                thumbnailURL:    thumbnailURL,
-                timestamp:       pending.timestamp,
-                note:            pending.note,
-                needsEnrichment: needsEnrich,
-                platform:        pending.platform
-            )
-            await refreshWidgetData()
-            await showToast("Bookmark saved!")
+            if let existing = try repository.findFirstRecord(videoID: pending.videoID) {
+                // Duplicate detected — route based on the per-video saving preference
+                switch existing.savingMethod {
+                case .cover:
+                    try repository.coverRecord(existing, timestamp: pending.timestamp, note: pending.note)
+                    await refreshWidgetData()
+                    await showToast("Bookmark updated!")
+
+                case .addNew:
+                    let defaultFolder = UserPreferences.defaultFolderID()
+                        .flatMap { try? repository.fetchFolder(byID: $0) }
+                    _ = try repository.createRecord(
+                        videoID:         pending.videoID,
+                        title:           title,
+                        thumbnailURL:    thumbnailURL,
+                        timestamp:       pending.timestamp,
+                        note:            pending.note,
+                        needsEnrichment: needsEnrich,
+                        folder:          defaultFolder,
+                        platform:        pending.platform
+                    )
+                    await refreshWidgetData()
+                    await showToast("Bookmark saved!")
+
+                case .ask:
+                    let defaultFolder = UserPreferences.defaultFolderID()
+                        .flatMap { try? repository.fetchFolder(byID: $0) }
+                    let incoming = IncomingBookmark(
+                        videoID:         pending.videoID,
+                        title:           title,
+                        thumbnailURL:    thumbnailURL,
+                        timestamp:       pending.timestamp,
+                        note:            pending.note,
+                        needsEnrichment: needsEnrich,
+                        platform:        pending.platform,
+                        folder:          defaultFolder
+                    )
+                    if let store = conflictStore {
+                        await MainActor.run { store.raise(DuplicateConflict(incoming: incoming, existing: existing)) }
+                    } else {
+                        // No conflict UI available — fall back to addNew silently
+                        _ = try repository.createRecord(
+                            videoID:         pending.videoID,
+                            title:           title,
+                            thumbnailURL:    thumbnailURL,
+                            timestamp:       pending.timestamp,
+                            note:            pending.note,
+                            needsEnrichment: needsEnrich,
+                            folder:          defaultFolder,
+                            platform:        pending.platform
+                        )
+                        await refreshWidgetData()
+                        await showToast("Bookmark saved!")
+                    }
+                }
+            } else {
+                // No duplicate — apply default folder and create
+                let defaultFolder = UserPreferences.defaultFolderID()
+                    .flatMap { try? repository.fetchFolder(byID: $0) }
+                _ = try repository.createRecord(
+                    videoID:         pending.videoID,
+                    title:           title,
+                    thumbnailURL:    thumbnailURL,
+                    timestamp:       pending.timestamp,
+                    note:            pending.note,
+                    needsEnrichment: needsEnrich,
+                    folder:          defaultFolder,
+                    platform:        pending.platform
+                )
+                await refreshWidgetData()
+                await showToast("Bookmark saved!")
+            }
         } catch {
             // SwiftData save failed — record is lost but pendingRecord is already deleted.
             // Nothing more we can do here; error would need to surface via a separate mechanism.
@@ -126,6 +191,8 @@ final class PendingRecordService {
         do {
             let recent = try repository.fetchRecentRecords(limit: 5)
             WidgetDataService.update(with: recent)
+            let allIDs = try repository.fetchAllRecords().map { $0.videoID }
+            WidgetDataService.updateSavedVideoIDs(allIDs)
         } catch {}
     }
 

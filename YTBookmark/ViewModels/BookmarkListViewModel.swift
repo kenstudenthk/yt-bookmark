@@ -27,8 +27,11 @@ final class BookmarkListViewModel {
 
     private func refreshWidgetData(context: ModelContext) {
         do {
-            let recent = try BookmarkRepository(context: context).fetchRecentRecords(limit: 5)
+            let repo = BookmarkRepository(context: context)
+            let recent = try repo.fetchRecentRecords(limit: 5)
             WidgetDataService.update(with: recent)
+            let allIDs = try repo.fetchAllRecords().map { $0.videoID }
+            WidgetDataService.updateSavedVideoIDs(allIDs)
         } catch {}
     }
 }
